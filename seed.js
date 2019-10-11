@@ -9,29 +9,14 @@ const db = require('./database/index.js');
 // ONLY need faker for dates
 
 // Note: using `force: true` will drop the table if it already exists
-db.Price.sync({ force: true }).then(() => {
+db.Reservation.sync({ force: true }).then(() => {
     // Now the `users` table in the database corresponds to the model definition
-    return db.Price.create({
+    return db.Reservation.create({
         pricePerNight: 1,
+        ratings: 1,
+        reviews: 1,
         serviceFee: 1,
-        totalPrice: 1
-    });
-});
-
-db.Calendar.sync({ force: true }).then(() => {
-    // Now the `users` table in the database corresponds to the model definition
-    return db.Calendar.create({
-        dateFrom: 1,
-        dateTill: 1,
-        nightCount: 1
-    });
-});
-
-db.Guest.sync({ force: true }).then(() => {
-    // Now the `users` table in the database corresponds to the model definition
-    return db.Guest.create({
-        adultCount: 1,
-        childCount: 1,
-        infantCount: 1
+        maxGuest: 1,
+        lowerBoundGuestNum: 1
     });
 });

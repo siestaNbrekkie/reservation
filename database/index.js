@@ -32,7 +32,7 @@ Reservation.init({
         allowNull: false
     },
     ratings: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL(1,2),
         allowNull: false
     },
     reviews: {
