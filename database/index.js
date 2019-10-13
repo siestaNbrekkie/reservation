@@ -1,11 +1,11 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('reservations', 'root', '', {
-    host: 'localhost',
-    dialect: 'mysql'
-});
+// const sequelize = new Sequelize('reservations', 'root', '', {
+//     host: 'localhost',
+//     dialect: 'mysql'
+// });
 
-// const sequelize = new Sequelize('mysql://root:localhost/reservations');
+const sequelize = new Sequelize('mysql://root:localhost/reservations');
 
 sequelize
     .authenticate()
