@@ -5,7 +5,7 @@ const Sequelize = require('sequelize');
 //     dialect: 'mysql'
 // });
 
-const sequelize = new Sequelize('mysql://root:localhost/reservations');
+const sequelize = new Sequelize('mysql://localhost:3000/reservations');
 
 sequelize
     .authenticate()
@@ -18,8 +18,8 @@ sequelize
 
 // Sequelize.Model.init(attributes, options) = sequelize.define(modelName, attributes, options)
 const Model = Sequelize.Model;
-class Reservation extends Model { }
-Reservation.init({
+class Listing extends Model { }
+Listing.init({
     // attributes
     id: {
         type: Sequelize.INTEGER,
@@ -444,12 +444,13 @@ const Calendar = sequelize.define('calendar', {
 });
 
 // Associations
-Calendar.hasMany(Reservation);
-Reservation.belongsTo(Calendar);
+Calendar.hasMany(Listing);
+Listing.belongsTo(Calendar);
 
+console.log('testing connection');
 
 module.exports = {
-    Reservation,
+    Listing,
     Calendar
 }
 

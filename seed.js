@@ -5,7 +5,7 @@ const db = require('./database/index.js');
 // ONLY need faker for dates
 
 // Note: using `force: true` will drop the table if it already exists
-db.Reservation.sync({ force: true }).then(() => {
+db.Listing.sync({ force: true }).then(() => {
     // Now the `reservations` table in the database corresponds to the model definition
     return db.Reservation.create({
         pricePerNight: Math.floor(Math.random() * 1000),
