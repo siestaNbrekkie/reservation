@@ -443,6 +443,10 @@ const Calendar = sequelize.define('calendar', {
     // options
 });
 
+// Associations
+Calendar.hasMany(Reservation);
+Reservation.belongsTo(Calendar);
+
 
 module.exports = {
     Reservation,
