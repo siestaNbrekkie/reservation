@@ -4,21 +4,20 @@ const db = require('./database/index.js');
 // Generate fake random data for column in a table then push into database
 // ONLY need faker for dates
 
-// generate 100 records
 for (let i = 0; i < 100; i++) {
     // Note: using `force: true` will drop the table if it already exists
     db.Listing.sync({ force: true }).then(() => {
         // Now the `reservations` table in the database corresponds to the model definition
         return db.Listing.create({
-            pricePerNight: Math.floor(Math.random() * 1000),
+            pricePerNight: Math.floor(Math.random() * 1000) + 1,
             ratings: ((Math.random() * 4) + 1).toFixed(2),
-            reviews: Math.floor(Math.random() * 500),
-            serviceFee: Math.floor(Math.random() * 300),
-            maxGuest: Math.floor(Math.random() * 20),
+            reviews: Math.floor(Math.random() * 500) + 1,
+            serviceFee: Math.floor(Math.random() * 300) + 1,
+            maxGuest: Math.floor(Math.random() * 20) + 1,
             lowerBoundGuestNum: Math.floor(Math.random() * 5)
         });
     });
-    
+
     db.Calendar.sync({ force: true }).then(() => {
         return db.Calendar.create({
             october1: !!Math.floor(Math.random() * 2),
