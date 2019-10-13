@@ -1,11 +1,9 @@
 const Sequelize = require('sequelize');
 
-// const sequelize = new Sequelize('reservations', 'root', '', {
-//     host: 'localhost',
-//     dialect: 'mysql'
-// });
-
-const sequelize = new Sequelize('mysql://localhost:3000/reservations');
+const sequelize = new Sequelize('reservations', 'root', '', {
+    host: 'localhost',
+    dialect: 'mysql'
+});
 
 sequelize
     .authenticate()
@@ -32,7 +30,7 @@ Listing.init({
         allowNull: false
     },
     ratings: {
-        type: Sequelize.DECIMAL(1,2),
+        type: Sequelize.DECIMAL(10,2),
         allowNull: false
     },
     reviews: {
@@ -53,7 +51,7 @@ Listing.init({
     }
 }, {
     sequelize,
-    modelName: 'price'
+    modelName: 'listing'
     // options
 });
 
@@ -310,11 +308,6 @@ const Calendar = sequelize.define('calendar', {
         type: Sequelize.BOOLEAN,
         allowNull: false
     },
-    november31: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false
-    },
-
     december1: {
         type: Sequelize.BOOLEAN,
         allowNull: false
@@ -444,8 +437,7 @@ const Calendar = sequelize.define('calendar', {
 });
 
 // Associations
-Calendar.hasMany(Listing);
-Listing.belongsTo(Calendar);
+Listing.hasOne(Calendar);
 
 console.log('testing connection');
 

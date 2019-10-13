@@ -7,7 +7,7 @@ const db = require('./database/index.js');
 // Note: using `force: true` will drop the table if it already exists
 db.Listing.sync({ force: true }).then(() => {
     // Now the `reservations` table in the database corresponds to the model definition
-    return db.Reservation.create({
+    return db.Listing.create({
         pricePerNight: Math.floor(Math.random() * 1000),
         ratings: ((Math.random() * 4) + 1).toFixed(2),
         reviews: Math.floor(Math.random() * 500),
@@ -18,7 +18,7 @@ db.Listing.sync({ force: true }).then(() => {
 });
 
 db.Calendar.sync({ force: true }).then(() => {
-    return db.Reservation.create({
+    return db.Calendar.create({
         october1: !!Math.floor(Math.random() * 2),
         october2: !!Math.floor(Math.random() * 2),
         october3: !!Math.floor(Math.random() * 2),
