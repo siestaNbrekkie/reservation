@@ -1,6 +1,6 @@
 const path = require('path');
-SRC_DIR = 'client/src';
-DIST_DIR = 'client/dist';
+const SRC_DIR = path.join(__dirname, '/client/src');
+const DIST_DIR = path.join(__dirname, '/client/dist');
 
 module.exports = {
     entry: `${SRC_DIR}/index.js`,
@@ -12,9 +12,9 @@ module.exports = {
     module: {
         rules: [
             {
-                test: '/\.(js|jsx)$/',
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                loader: 'babel_loader'
+                loader: 'babel-loader'
             }
         ]
     },
