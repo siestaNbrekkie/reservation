@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack -d -w",
     "start": "nodemon ./server/index.js",
-    "seed": "node ./seed.js",
+    "seed": "mysql -u root < schema.sql & node ./seed.js &",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
