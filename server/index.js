@@ -11,4 +11,4 @@ app.use(bodyParser.json());
 
 app.get('/listings', controllers.getListings);
 
-app.listen(port, () => console.log(`Server listening on port ${port}!`))
+app.listen(port, () => console.log(`Server listening on port ${port}!`));
