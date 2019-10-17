@@ -31,25 +31,25 @@ class App extends React.Component {
 
 
   render() {
-    // const { listingInfo } = this.state;
-    // const firstListing = listingInfo[0];
-    const firstListing = this.state.listingInfo[0];
-    // console.log('inside render', firstListing);
-    // console.log(firstListing.pricePerNight);
-    console.log(firstListing);
+    const { listingInfo } = this.state;
+    const firstListing = listingInfo[0];
+
+    if (!firstListing) {
+      return <div> </div>;
+    }
 
     return (
       <div>
         <div>
           $
-          {/* {firstListing.pricePerNight} */}
+          {firstListing.pricePerNight}
           /night
         </div>
         <div>
           $
-          {/* {firstListing.ratings} */}
+          {firstListing.ratings}
           (
-          {/* {firstListing.reviews} */}
+          {firstListing.reviews}
           reviews)
         </div>
         <Calendar />
