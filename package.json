@@ -30,7 +30,6 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "sequelize": "^5.19.4",
-    "sinon": "^7.5.0",
     "styled-components": "^4.4.0"
   },
   "devDependencies": {
