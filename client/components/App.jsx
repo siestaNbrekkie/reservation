@@ -1,6 +1,7 @@
 import React from 'react';
 import Calendar from './Calendar';
 import Guest from './Guest';
+import ReserveButton from './ReserveButton';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class App extends React.Component {
       <div>
         <Calendar />
         <Guest />
+        <ReserveButton />
       </div>
     );
   }
