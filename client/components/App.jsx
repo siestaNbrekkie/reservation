@@ -9,16 +9,16 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      listingInfo: [],
+      listingInfo: {},
     };
   }
 
   componentDidMount() {
-    this.getListings();
+    this.getListing();
   }
 
-  getListings() {
-    axios.get('/listings')
+  getListing() {
+    axios.get(`/api${window.location.pathname}`)
       .then((response) => {
         this.setState({
           listingInfo: response.data,
@@ -32,9 +32,8 @@ class App extends React.Component {
 
   render() {
     const { listingInfo } = this.state;
-    const firstListing = listingInfo[0];
 
-    if (!firstListing) {
+    if (!listingInfo) {
       return <div> </div>;
     }
 
@@ -42,14 +41,14 @@ class App extends React.Component {
       <div>
         <div>
           $
-          {firstListing.pricePerNight}
+          {listingInfo.pricePerNight}
           /night
         </div>
         <div>
           $
-          {firstListing.ratings}
+          {listingInfo.ratings}
           (
-          {firstListing.reviews}
+          {listingInfo.reviews}
           reviews)
         </div>
         <Calendar />

@@ -6,10 +6,10 @@ const controllers = require('../database/dbMethods.js');
 const app = express();
 const port = 3000;
 
-app.use(express.static(path.join(__dirname, '../public')));
+app.use('/rooms/:id', express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 
-app.get('/listings', controllers.getListings);
+app.get('/api/rooms/:id', controllers.getListing);
 app.get('/dates', controllers.getDates);
 
 app.listen(port, () => console.log(`Server listening on port ${port}!`));

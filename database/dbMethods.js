@@ -1,8 +1,10 @@
 const db = require('./index.js');
 
 module.exports = {
-  getListings: (req, res) => {
-    db.Listing.findAll()
+  getListing: (req, res) => {
+    const { id } = req.params;
+
+    db.Listing.findOne({ where: { id } })
       .then((data) => {
         res.status(200).send(data);
       })
