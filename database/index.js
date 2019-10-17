@@ -444,5 +444,4 @@ console.log('testing connection');
 module.exports = {
   Listing,
   Calendar,
-}
-
+};
