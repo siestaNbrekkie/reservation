@@ -1,4 +1,5 @@
 import React from 'react';
+import Calendar from './Calendar';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +10,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>Here&apos;s the App component hi</div>
+      <div>
+        <Calendar />
+      </div>
     );
   }
 }
