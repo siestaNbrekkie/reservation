@@ -10,6 +10,6 @@ app.use('/rooms/:id', express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 
 app.get('/api/rooms/:id', controllers.getListing);
-app.get('/dates', controllers.getDates);
+app.get('/api/rooms/:id/dates', controllers.getDates);
 
 app.listen(port, () => console.log(`Server listening on port ${port}!`));
