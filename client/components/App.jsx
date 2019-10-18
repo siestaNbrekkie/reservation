@@ -1,8 +1,15 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
 import Calendar from './Calendar';
 import Guest from './Guest';
 import ReserveButton from './ReserveButton';
+
+const GreenDiv = styled.div`
+  background-color: green;
+  color: white;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -46,11 +53,11 @@ class App extends React.Component {
 
     return (
       <div>
-        <div>
+        <GreenDiv>
           $
           {listingInfo.pricePerNight}
           /night
-        </div>
+        </GreenDiv>
         <div>
           $
           {listingInfo.ratings}
