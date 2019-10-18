@@ -11,6 +11,8 @@ class App extends React.Component {
     this.state = {
       listingInfo: {},
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -29,6 +31,11 @@ class App extends React.Component {
       });
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+
+    window.alert('Submitting form!');
+  };
 
   render() {
     const { listingInfo } = this.state;
@@ -53,7 +60,7 @@ class App extends React.Component {
         </div>
         <Calendar />
         <Guest />
-        <ReserveButton />
+        <ReserveButton handleSubmit={this.handleSubmit} />
       </div>
     );
   }
