@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
+import Date from './Date';
 import Calendar from './Calendar';
 import Guest from './Guest';
 import ReserveButton from './ReserveButton';
@@ -65,6 +66,7 @@ class App extends React.Component {
           {listingInfo.reviews}
           reviews)
         </div>
+        <Date />
         <Calendar />
         <Guest />
         <ReserveButton handleSubmit={this.handleSubmit} />
