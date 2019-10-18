@@ -14,7 +14,9 @@ module.exports = {
   },
 
   getDates: (req, res) => {
-    db.Calendar.findAll()
+    const { id } = req.params;
+
+    db.Calendar.findOne({ where: { id } })
       .then((data) => {
         res.status(200).send(data);
       })
