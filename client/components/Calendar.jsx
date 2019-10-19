@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const CalendarBox = styled.div`
   width: 333px;
   height: 332px;
-  border: 1px solid grey;
+  border: 1px solid rgb(228, 231, 231);
   color: rgb(72, 72, 72)
 `;
 
@@ -47,38 +47,67 @@ class Calendar extends React.Component {
     this.state = {
       leftArrow: false,
       rightArrow: false,
+      currentDay: new Date().getDay(),
+      currentDate: new Date().getDate(),
+      currentMonth: new Date().getMonth(),
+      currentYear: new Date().getFullYear(),
+      startDay: 0,
     };
 
     this.handleLeftClick = this.handleLeftClick.bind(this);
     this.handleRightClick = this.handleRightClick.bind(this);
   }
 
+  componentDidMount() {
+    const { currentDay, currentDate } = this.state;
+
+    this.setState({
+      startDay: (((currentDay - (currentDate - 1)) % 7) + 7) % 7,
+    });
+  }
+
   handleLeftClick(event) {
     event.preventDefault();
 
+    const { currentMonth, currentYear, startDay } = this.state;
     console.log(`LEFT was clicked!`);
+
+    if (currentMonth === 1) {
+      this.setState({
+        currentYear: currentYear - 1,
+      });
+    }
+
     this.setState({
       leftArrow: true,
       rightArrow: false,
+      currentMonth: (currentMonth - 1) % 12,
+      startDay: (((startDay - 1) % 7) + 7) % 7,
     });
   }
 
   handleRightClick(event) {
     event.preventDefault();
 
+    const { currentMonth, currentYear, startDay } = this.state;
     console.log(`RIGHT was clicked!`);
+
+    if (currentMonth === 12) {
+      this.setState({
+        currentYear: currentYear + 1,
+      });
+    }
+
     this.setState({
       rightArrow: true,
       leftArrow: false,
+      currentMonth: (currentMonth + 1) % 12,
+      startDay: (((startDay + 1) % 7) + 7) % 7,
     });
   }
 
   render() {
-    const currentDay = new Date().getDay();
-    const currentDate = new Date().getDate();
-    const currentMonth = new Date().getMonth() + 1;
-    const currentYear = new Date().getFullYear();
-    const startDay = (((currentDay - (currentDate - 1)) % 7) + 7) % 7;
+    const { currentMonth, currentYear, startDay } = this.state;
 
     let isLeapYear;
     let daysInMonth;
@@ -108,18 +137,18 @@ class Calendar extends React.Component {
     }
 
     const Months = {
-      1: 'January',
-      2: 'February',
-      3: 'March',
-      4: 'April',
-      5: 'May',
-      6: 'June',
-      7: 'July',
-      8: 'August',
-      9: 'September',
-      10: 'October',
-      11: 'November',
-      12: 'December',
+      0: 'January',
+      1: 'February',
+      2: 'March',
+      3: 'April',
+      4: 'May',
+      5: 'June',
+      6: 'July',
+      7: 'August',
+      8: 'September',
+      9: 'October',
+      10: 'November',
+      11: 'December',
     };
 
     const row1 = [];
