@@ -44,7 +44,33 @@ class Calendar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      leftArrow: false,
+      rightArrow: false,
+    };
+
+    this.handleLeftClick = this.handleLeftClick.bind(this);
+    this.handleRightClick = this.handleRightClick.bind(this);
+  }
+
+  handleLeftClick(event) {
+    event.preventDefault();
+
+    console.log(`LEFT was clicked!`);
+    this.setState({
+      leftArrow: true,
+      rightArrow: false,
+    });
+  }
+
+  handleRightClick(event) {
+    event.preventDefault();
+
+    console.log(`RIGHT was clicked!`);
+    this.setState({
+      rightArrow: true,
+      leftArrow: false,
+    });
   }
 
   render() {
@@ -96,8 +122,6 @@ class Calendar extends React.Component {
       12: 'December',
     };
 
-    let days = new Array(35);
-
     const row1 = [];
     const row2 = [];
     const row3 = [];
@@ -131,7 +155,7 @@ class Calendar extends React.Component {
     return (
       <CalendarBox>
         <TopHeader>
-          <ArrowBox>
+          <ArrowBox onClick={this.handleLeftClick}>
             &lt;--
           </ArrowBox>
           <MonthAndYear>
@@ -139,7 +163,7 @@ class Calendar extends React.Component {
             {' '}
             {currentYear}
           </MonthAndYear>
-          <ArrowBox>
+          <ArrowBox onClick={this.handleRightClick}>
             --&gt;
           </ArrowBox>
         </TopHeader>
