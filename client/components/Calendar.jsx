@@ -5,6 +5,24 @@ const CalendarBox = styled.div`
   width: 333px;
   height: 332px;
   border: 1px solid grey;
+  color: rgb(72, 72, 72)
+`;
+
+const TopHeader = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+const MonthAndYear = styled.div`
+  text-align: center;
+  font-family: Cereal;
+`;
+
+const ArrowBox = styled.div`
+  width: 37px;
+  height: 31px;
+  border: 1px solid rgb(228, 231, 231);
+  border-radius: 3px;
 `;
 
 const Rows = styled.div`
@@ -18,8 +36,9 @@ const Dates = styled.div`
   width: 40px;
   height: 39px;
   text-align: center;
-  border: 1px solid grey;
+  border: 1px solid rgb(228, 231, 231);
 `;
+
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -35,8 +54,8 @@ class Calendar extends React.Component {
     const currentYear = new Date().getFullYear();
     const startDay = (((currentDay - (currentDate - 1)) % 7) + 7) % 7;
 
-    let daysInMonth;
     let isLeapYear;
+    let daysInMonth;
 
     if (currentYear % 4 !== 0) {
       isLeapYear = false;
@@ -56,12 +75,74 @@ class Calendar extends React.Component {
       }
     } else if (currentMonth < 8 && currentMonth % 2 === 1) {
       daysInMonth = 31;
+    } else if (currentMonth > 7 && currentMonth % 2 === 0) {
+      daysInMonth = 31;
     } else {
       daysInMonth = 30;
     }
 
+    const Months = {
+      1: 'January',
+      2: 'February',
+      3: 'March',
+      4: 'April',
+      5: 'May',
+      6: 'June',
+      7: 'July',
+      8: 'August',
+      9: 'September',
+      10: 'October',
+      11: 'November',
+      12: 'December',
+    };
+
+    let days = new Array(35);
+
+    const row1 = [];
+    const row2 = [];
+    const row3 = [];
+    const row4 = [];
+    const row5 = [];
+
+    for (let i = 0; i < startDay; i += 1) {
+      row1.push(' ');
+    }
+
+    for (let i = 1; i <= daysInMonth; i += 1) {
+      if (row1.length < 7) {
+        row1.push(i);
+      } else if (row2.length < 7) {
+        row2.push(i);
+      } else if (row3.length < 7) {
+        row3.push(i);
+      } else if (row4.length < 7) {
+        row4.push(i);
+      } else {
+        row5.push(i);
+      }
+    }
+
+    const numOflastEmptyDivs = 7 - row5.length;
+
+    for (let i = 0; i < numOflastEmptyDivs; i += 1) {
+      row5.push(' ');
+    }
+
     return (
       <CalendarBox>
+        <TopHeader>
+          <ArrowBox>
+            &lt;--
+          </ArrowBox>
+          <MonthAndYear>
+            {Months[currentMonth]}
+            {' '}
+            {currentYear}
+          </MonthAndYear>
+          <ArrowBox>
+            --&gt;
+          </ArrowBox>
+        </TopHeader>
         <Rows>
           <div>Su</div>
           <div>Mo</div>
@@ -72,49 +153,19 @@ class Calendar extends React.Component {
           <div>Sa</div>
         </Rows>
         <Rows>
-          <Dates> </Dates>
-          <Dates> </Dates>
-          <Dates>1</Dates>
-          <Dates>2</Dates>
-          <Dates>3</Dates>
-          <Dates>4</Dates>
-          <Dates>5</Dates>
+          {row1.map((day) => <Dates>{day}</Dates>)}
         </Rows>
         <Rows>
-          <Dates> </Dates>
-          <Dates> </Dates>
-          <Dates>1</Dates>
-          <Dates>2</Dates>
-          <Dates>3</Dates>
-          <Dates>4</Dates>
-          <Dates>5</Dates>
+          {row2.map((day) => <Dates>{day}</Dates>)}
         </Rows>
         <Rows>
-          <Dates> </Dates>
-          <Dates> </Dates>
-          <Dates>1</Dates>
-          <Dates>2</Dates>
-          <Dates>3</Dates>
-          <Dates>4</Dates>
-          <Dates>5</Dates>
+          {row3.map((day) => <Dates>{day}</Dates>)}
         </Rows>
         <Rows>
-          <Dates> </Dates>
-          <Dates> </Dates>
-          <Dates>1</Dates>
-          <Dates>2</Dates>
-          <Dates>3</Dates>
-          <Dates>4</Dates>
-          <Dates>5</Dates>
+          {row4.map((day) => <Dates>{day}</Dates>)}
         </Rows>
         <Rows>
-          <Dates> </Dates>
-          <Dates> </Dates>
-          <Dates>1</Dates>
-          <Dates>2</Dates>
-          <Dates>3</Dates>
-          <Dates>4</Dates>
-          <Dates>5</Dates>
+          {row5.map((day) => <Dates>{day}</Dates>)}
         </Rows>
       </CalendarBox>
     );
