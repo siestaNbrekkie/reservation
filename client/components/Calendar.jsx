@@ -72,9 +72,9 @@ class Calendar extends React.Component {
     const { currentMonth, currentYear, startDay } = this.state;
     console.log(`LEFT was clicked!`);
 
-    if (currentMonth === 1) {
+    if (currentMonth === 0) {
       this.setState({
-        currentYear: currentYear - 1,
+        currentYear: ((currentYear - 1) % 12) + 12,
       });
     }
 
@@ -92,7 +92,7 @@ class Calendar extends React.Component {
     const { currentMonth, currentYear, startDay } = this.state;
     console.log(`RIGHT was clicked!`);
 
-    if (currentMonth === 12) {
+    if (currentMonth === 11) {
       this.setState({
         currentYear: currentYear + 1,
       });
@@ -128,9 +128,9 @@ class Calendar extends React.Component {
       } else {
         daysInMonth = 28;
       }
-    } else if (currentMonth < 8 && currentMonth % 2 === 1) {
+    } else if (currentMonth < 7 && currentMonth % 2 === 0) {
       daysInMonth = 31;
-    } else if (currentMonth > 7 && currentMonth % 2 === 0) {
+    } else if (currentMonth > 6 && currentMonth % 2 === 1) {
       daysInMonth = 31;
     } else {
       daysInMonth = 30;
