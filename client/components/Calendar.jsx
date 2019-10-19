@@ -259,6 +259,7 @@ class Calendar extends React.Component {
     const row3 = [];
     const row4 = [];
     const row5 = [];
+    const row6 = [];
 
     for (let i = 0; i < startDay; i += 1) {
       row1.push(' ');
@@ -273,15 +274,27 @@ class Calendar extends React.Component {
         row3.push(i);
       } else if (row4.length < 7) {
         row4.push(i);
-      } else {
+      } else if (row5.length < 7) {
         row5.push(i);
+      } else {
+        row6.push(i);
       }
     }
 
-    const numOflastEmptyDivs = 7 - row5.length;
+    let numOflastEmptyDivs;
 
-    for (let i = 0; i < numOflastEmptyDivs; i += 1) {
-      row5.push(' ');
+    if (row6.length) {
+      numOflastEmptyDivs = 7 - row6.length;
+
+      for (let i = 0; i < numOflastEmptyDivs; i += 1) {
+        row6.push(' ');
+      }
+    } else {
+      numOflastEmptyDivs = 7 - row5.length;
+
+      for (let i = 0; i < numOflastEmptyDivs; i += 1) {
+        row5.push(' ');
+      }
     }
 
     return (
@@ -322,6 +335,9 @@ class Calendar extends React.Component {
         </Rows>
         <Rows>
           {row5.map((day) => <Dates>{day}</Dates>)}
+        </Rows>
+        <Rows>
+          {row6.map((day) => <Dates>{day}</Dates>)}
         </Rows>
       </CalendarBox>
     );
