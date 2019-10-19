@@ -51,66 +51,33 @@ class Calendar extends React.Component {
       currentDate: new Date().getDate(),
       currentMonth: new Date().getMonth(),
       currentYear: new Date().getFullYear(),
+      daysInMonth: 0,
       startDay: 0,
     };
 
     this.handleLeftClick = this.handleLeftClick.bind(this);
     this.handleRightClick = this.handleRightClick.bind(this);
+    this.obtainDaysInMonth = this.obtainDaysInMonth.bind(this);
+    this.obtainDaysInPrevMonth = this.obtainDaysInPrevMonth.bind(this);
+    this.obtainDaysInNextMonth = this.obtainDaysInNextMonth.bind(this);
   }
 
   componentDidMount() {
     const { currentDay, currentDate } = this.state;
 
+    const numDaysInMonth = this.obtainDaysInMonth();
+
     this.setState({
       startDay: (((currentDay - (currentDate - 1)) % 7) + 7) % 7,
+      daysInMonth: numDaysInMonth,
     });
   }
 
-  handleLeftClick(event) {
-    event.preventDefault();
-
-    const { currentMonth, currentYear, startDay } = this.state;
-    console.log(`LEFT was clicked!`);
-
-    if (currentMonth === 0) {
-      this.setState({
-        currentYear: ((currentYear - 1) % 12) + 12,
-      });
-    }
-
-    this.setState({
-      leftArrow: true,
-      rightArrow: false,
-      currentMonth: (currentMonth - 1) % 12,
-      startDay: (((startDay - 1) % 7) + 7) % 7,
-    });
-  }
-
-  handleRightClick(event) {
-    event.preventDefault();
-
-    const { currentMonth, currentYear, startDay } = this.state;
-    console.log(`RIGHT was clicked!`);
-
-    if (currentMonth === 11) {
-      this.setState({
-        currentYear: currentYear + 1,
-      });
-    }
-
-    this.setState({
-      rightArrow: true,
-      leftArrow: false,
-      currentMonth: (currentMonth + 1) % 12,
-      startDay: (((startDay + 1) % 7) + 7) % 7,
-    });
-  }
-
-  render() {
-    const { currentMonth, currentYear, startDay } = this.state;
+  obtainDaysInMonth() {
+    const { currentMonth, currentYear } = this.state;
 
     let isLeapYear;
-    let daysInMonth;
+    let numDaysInMonth;
 
     if (currentYear % 4 !== 0) {
       isLeapYear = false;
@@ -122,19 +89,155 @@ class Calendar extends React.Component {
       isLeapYear = true;
     }
 
-    if (currentMonth === 2) {
+    if (currentMonth === 1) {
       if (isLeapYear) {
-        daysInMonth = 29;
+        numDaysInMonth = 29;
       } else {
-        daysInMonth = 28;
+        numDaysInMonth = 28;
       }
     } else if (currentMonth < 7 && currentMonth % 2 === 0) {
-      daysInMonth = 31;
+      numDaysInMonth = 31;
     } else if (currentMonth > 6 && currentMonth % 2 === 1) {
-      daysInMonth = 31;
+      numDaysInMonth = 31;
     } else {
-      daysInMonth = 30;
+      numDaysInMonth = 30;
     }
+
+    return numDaysInMonth;
+  }
+
+  obtainDaysInPrevMonth() {
+    const { currentMonth, currentYear } = this.state;
+
+    const prevMonth = (((currentMonth - 1) % 12) + 12) % 12;
+    let isLeapYear;
+    let numDaysInPrevMonth;
+
+    if (currentYear % 4 !== 0) {
+      isLeapYear = false;
+    } else if (currentYear % 100 !== 0) {
+      isLeapYear = true;
+    } else if (currentYear % 400 !== 0) {
+      isLeapYear = false;
+    } else {
+      isLeapYear = true;
+    }
+
+    if (prevMonth === 1) {
+      if (isLeapYear) {
+        numDaysInPrevMonth = 29;
+      } else {
+        numDaysInPrevMonth = 28;
+      }
+    } else if (prevMonth < 7 && prevMonth % 2 === 0) {
+      numDaysInPrevMonth = 31;
+    } else if (prevMonth > 6 && prevMonth % 2 === 1) {
+      numDaysInPrevMonth = 31;
+    } else {
+      numDaysInPrevMonth = 30;
+    }
+
+    return numDaysInPrevMonth;
+  }
+
+  obtainDaysInNextMonth() {
+    const { currentMonth, currentYear } = this.state;
+
+    const nextMonth = (((currentMonth + 1) % 12) + 12) % 12;
+    let isLeapYear;
+    let numDaysInNextMonth;
+
+    if (currentYear % 4 !== 0) {
+      isLeapYear = false;
+    } else if (currentYear % 100 !== 0) {
+      isLeapYear = true;
+    } else if (currentYear % 400 !== 0) {
+      isLeapYear = false;
+    } else {
+      isLeapYear = true;
+    }
+
+    if (nextMonth === 1) {
+      if (isLeapYear) {
+        numDaysInNextMonth = 29;
+      } else {
+        numDaysInNextMonth = 28;
+      }
+    } else if (nextMonth < 7 && nextMonth % 2 === 0) {
+      numDaysInNextMonth = 31;
+    } else if (nextMonth > 6 && nextMonth % 2 === 1) {
+      numDaysInNextMonth = 31;
+    } else {
+      numDaysInNextMonth = 30;
+    }
+
+    return numDaysInNextMonth;
+  }
+
+  handleLeftClick(event) {
+    event.preventDefault();
+
+    const {
+      currentMonth,
+      currentYear,
+      startDay,
+    } = this.state;
+
+    const daysInPrevMonth = this.obtainDaysInPrevMonth();
+
+    console.log(`LEFT was clicked!`);
+
+    if (currentMonth === 0) {
+      this.setState({
+        currentYear: currentYear - 1,
+      });
+    }
+
+    this.setState({
+      leftArrow: true,
+      rightArrow: false,
+      currentMonth: (((currentMonth - 1) % 12) + 12) % 12,
+      startDay: (((startDay - daysInPrevMonth) % 7) + 7) % 7,
+      daysInMonth: daysInPrevMonth,
+    });
+  }
+
+  handleRightClick(event) {
+    event.preventDefault();
+
+    const {
+      currentMonth,
+      currentYear,
+      startDay,
+      daysInMonth,
+    } = this.state;
+
+    console.log(`RIGHT was clicked!`);
+
+    if (currentMonth === 11) {
+      this.setState({
+        currentYear: currentYear + 1,
+      });
+    }
+
+    const numDaysInNextMonth = this.obtainDaysInNextMonth();
+
+    this.setState({
+      rightArrow: true,
+      leftArrow: false,
+      currentMonth: (currentMonth + 1) % 12,
+      startDay: (((startDay + daysInMonth) % 7) + 7) % 7,
+      daysInMonth: numDaysInNextMonth,
+    });
+  }
+
+  render() {
+    const {
+      currentMonth,
+      currentYear,
+      startDay,
+      daysInMonth,
+    } = this.state;
 
     const Months = {
       0: 'January',
