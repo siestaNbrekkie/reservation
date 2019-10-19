@@ -4,8 +4,10 @@ import styled from 'styled-components';
 const CalendarBox = styled.div`
   width: 333px;
   height: 332px;
-  border: 1px solid rgb(228, 231, 231);
-  color: rgb(72, 72, 72)
+  color: rgb(72, 72, 72);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+  background: rgb(255, 255, 255);
+  border-radius: 3px;
 `;
 
 const TopHeader = styled.div`
