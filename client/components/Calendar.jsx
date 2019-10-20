@@ -9,6 +9,7 @@ const CalendarBox = styled.div`
   box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
   background: rgb(255, 255, 255);
   border-radius: 3px;
+  font-family: sans-serif;
 `;
 
 const TopHeader = styled.div`
@@ -17,8 +18,11 @@ const TopHeader = styled.div`
 `;
 
 const MonthAndYear = styled.div`
+  display: flex;
+  justify-content: center;
   text-align: center;
-  font-family: Cereal;
+  font-weight: bold;
+  font-size: 18px;
 `;
 
 const ArrowBox = styled.div`
@@ -33,6 +37,11 @@ const Rows = styled.div`
   justify-content: space-around;
 `;
 
+const Days = styled.div`
+  color: rgb(117,117,117);
+  font-size: 11.67px;
+`;
+
 const Dates = styled.div`
   display: flex;
   justify-content: space-around;
@@ -40,13 +49,19 @@ const Dates = styled.div`
   height: 39px;
   text-align: center;
   border: 1px solid rgb(228, 231, 231);
+  font-size: 14px;
   
-  // if prop is true
-  ${props =>
-    (props.available === false)
+  ${(props) => (props.available === false)
     && css`
       text-decoration: line-through;
       color: rgb(216,216,216);
+    `}
+
+  ${(props) => (props.available)
+    && css`
+    :hover {
+      background-color: rgb(228, 231, 231);
+    }
     `}
 `;
 
@@ -281,8 +296,6 @@ class Calendar extends React.Component {
       11: 'December',
     };
 
-    console.log('hey:', !!dates[`${Months[currentMonth].toLowerCase()} `]);
-
     const row1 = [];
     const row2 = [];
     const row3 = [];
@@ -342,13 +355,13 @@ class Calendar extends React.Component {
           </ArrowBox>
         </TopHeader>
         <Rows>
-          <div>Su</div>
-          <div>Mo</div>
-          <div>Tu</div>
-          <div>We</div>
-          <div>Th</div>
-          <div>Fr</div>
-          <div>Sa</div>
+          <Days>Su</Days>
+          <Days>Mo</Days>
+          <Days>Tu</Days>
+          <Days>We</Days>
+          <Days>Th</Days>
+          <Days>Fr</Days>
+          <Days>Sa</Days>
         </Rows>
         <Rows>
           {row1.map((day) => <Dates available={dates[`${Months[currentMonth].toLowerCase()}${day}`]}>{day}</Dates>)}
