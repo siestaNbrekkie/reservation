@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import axios from 'axios';
+import styled, { css } from 'styled-components';
 
 const CalendarBox = styled.div`
   width: 333px;
@@ -39,6 +40,14 @@ const Dates = styled.div`
   height: 39px;
   text-align: center;
   border: 1px solid rgb(228, 231, 231);
+  
+  // if prop is true
+  ${props =>
+    (props.available === false)
+    && css`
+      text-decoration: line-through;
+      color: rgb(216,216,216);
+    `}
 `;
 
 
@@ -55,6 +64,7 @@ class Calendar extends React.Component {
       currentYear: new Date().getFullYear(),
       daysInMonth: 0,
       startDay: 0,
+      dates: {},
     };
 
     this.handleLeftClick = this.handleLeftClick.bind(this);
@@ -66,13 +76,27 @@ class Calendar extends React.Component {
 
   componentDidMount() {
     const { currentDay, currentDate } = this.state;
-
     const numDaysInMonth = this.obtainDaysInMonth();
+
+    this.getDates();
 
     this.setState({
       startDay: (((currentDay - (currentDate - 1)) % 7) + 7) % 7,
       daysInMonth: numDaysInMonth,
     });
+  }
+
+  getDates() {
+    axios.get(`/api${window.location.pathname}dates`)
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          dates: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   obtainDaysInMonth() {
@@ -187,8 +211,6 @@ class Calendar extends React.Component {
 
     const daysInPrevMonth = this.obtainDaysInPrevMonth();
 
-    console.log(`LEFT was clicked!`);
-
     if (currentMonth === 0) {
       this.setState({
         currentYear: currentYear - 1,
@@ -214,8 +236,6 @@ class Calendar extends React.Component {
       daysInMonth,
     } = this.state;
 
-    console.log(`RIGHT was clicked!`);
-
     if (currentMonth === 11) {
       this.setState({
         currentYear: currentYear + 1,
@@ -239,7 +259,12 @@ class Calendar extends React.Component {
       currentYear,
       startDay,
       daysInMonth,
+      dates,
     } = this.state;
+
+    if (!Object.keys(dates).length) {
+      return <div> </div>;
+    }
 
     const Months = {
       0: 'January',
@@ -255,6 +280,8 @@ class Calendar extends React.Component {
       10: 'November',
       11: 'December',
     };
+
+    console.log('hey:', !!dates[`${Months[currentMonth].toLowerCase()} `]);
 
     const row1 = [];
     const row2 = [];
@@ -324,22 +351,22 @@ class Calendar extends React.Component {
           <div>Sa</div>
         </Rows>
         <Rows>
-          {row1.map((day) => <Dates>{day}</Dates>)}
+          {row1.map((day) => <Dates available={dates[`${Months[currentMonth].toLowerCase()}${day}`]}>{day}</Dates>)}
         </Rows>
         <Rows>
-          {row2.map((day) => <Dates>{day}</Dates>)}
+          {row2.map((day) => <Dates available={dates[`${Months[currentMonth].toLowerCase()}${day}`]}>{day}</Dates>)}
         </Rows>
         <Rows>
-          {row3.map((day) => <Dates>{day}</Dates>)}
+          {row3.map((day) => <Dates available={dates[`${Months[currentMonth].toLowerCase()}${day}`]}>{day}</Dates>)}
         </Rows>
         <Rows>
-          {row4.map((day) => <Dates>{day}</Dates>)}
+          {row4.map((day) => <Dates available={dates[`${Months[currentMonth].toLowerCase()}${day}`]}>{day}</Dates>)}
         </Rows>
         <Rows>
-          {row5.map((day) => <Dates>{day}</Dates>)}
+          {row5.map((day) => <Dates available={dates[`${Months[currentMonth].toLowerCase()}${day}`]}>{day}</Dates>)}
         </Rows>
         <Rows>
-          {row6.map((day) => <Dates>{day}</Dates>)}
+          {row6.map((day) => <Dates available={dates[`${Months[currentMonth].toLowerCase()}${day}`]}>{day}</Dates>)}
         </Rows>
       </CalendarBox>
     );
