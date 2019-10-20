@@ -30,21 +30,31 @@ const ArrowBox = styled.div`
   height: 31px;
   border: 1px solid rgb(228, 231, 231);
   border-radius: 3px;
+  cursor: pointer;
 `;
 
 const Rows = styled.div`
   display: flex;
-  justify-content: space-around;
-`;
+  justify-content: center;
+  // align-items: center;
+  margin: 0.07px;
+  `;
 
 const Days = styled.div`
+  width: 41px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: rgb(117,117,117);
   font-size: 11.67px;
+  margin: 0.07px;
 `;
 
 const Dates = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   width: 40px;
   height: 39px;
   text-align: center;
@@ -61,7 +71,8 @@ const Dates = styled.div`
     && css`
     :hover {
       background-color: rgb(228, 231, 231);
-    }
+    };
+    cursor: pointer;
     `}
 `;
 
