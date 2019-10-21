@@ -9,8 +9,8 @@ const CalendarBox = styled.div`
   box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
   background: rgb(255, 255, 255);
   border-radius: 3px;
-  // font-family: 'Montserrat', sans-serif;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  // font-family: 'Roboto', sans-serif;
   // font-family: 'Nunito Sans', sans-serif;
 `;
 
@@ -22,7 +22,11 @@ const TopHeader = styled.div`
 const MonthAndYear = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 27px;
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  // font-family: 'Roboto', sans-serif;
+  // font-family: 'Nunito Sans', sans-serif;
   font-weight: bold;
   font-size: 18px;
 `;
@@ -30,6 +34,8 @@ const MonthAndYear = styled.div`
 const ArrowBox = styled.div`
   width: 37px;
   height: 31px;
+  margin-top: 18px;
+  margin-bottom: 18px;
   border: 1px solid rgb(228, 231, 231);
   border-radius: 3px;
   cursor: pointer;
@@ -62,6 +68,7 @@ const Dates = styled.div`
   text-align: center;
   border: 0.4px solid rgb(228, 231, 231);
   font-size: 14px;
+  font-weight: bold;
   
   ${(props) => (props.available === false)
     && css`
