@@ -14,6 +14,7 @@ const Button = styled.input`
   margin-top: 74px;
   margin-left: 24px;
   margin-right: 24px;
+  cursor: pointer;
 `;
 
 const ReserveButton = (props) => {
