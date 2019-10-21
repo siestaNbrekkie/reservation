@@ -11,7 +11,7 @@ const Button = styled.input`
   font-size: 16px;
   border: 1px solid rgb(234,85,92);
   border-radius: 4px;
-  margin-top: 74px;
+  margin-top: 24px;
   margin-left: 24px;
   margin-right: 24px;
   cursor: pointer;
