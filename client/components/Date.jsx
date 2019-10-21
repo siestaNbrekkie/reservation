@@ -6,6 +6,7 @@ const DateDiv = styled.div`
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
+  padding-top: 112px;
 `;
 
 const DateBox = styled.div`
@@ -64,6 +65,8 @@ class Date extends React.Component {
   }
 
   render() {
+    const { checkIn } = this.state;
+
     return (
       <DateDiv>
         <div style={{
@@ -79,6 +82,7 @@ class Date extends React.Component {
           <CheckInOut style={{ paddingLeft: '7px' }} onClick={this.handleClickCheckOut}>Checkout</CheckInOut>
           {/* <Calendar /> */}
         </DateBox>
+        {checkIn ? <Calendar /> : <div />}
       </DateDiv>
     );
   }

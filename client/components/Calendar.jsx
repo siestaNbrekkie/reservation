@@ -10,6 +10,10 @@ const CalendarBox = styled.div`
   background: rgb(255, 255, 255);
   border-radius: 3px;
   font-family: 'Montserrat', sans-serif;
+  z-index: 1;
+  position: absolute;
+  top: 215px;
+  left: 32px;
 `;
 
 const TopHeader = styled.div`
