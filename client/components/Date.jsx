@@ -11,6 +11,7 @@ const DateDiv = styled.div`
 const DateBox = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 324px;
   height: 40px;
   margin-left: 24px;
@@ -24,8 +25,9 @@ const CheckInOut = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 144px;
+  width: 140px;
   height: 40px;
+  color: rgb(143,143,143);
 `;
 
 class Date extends React.Component {
@@ -64,12 +66,17 @@ class Date extends React.Component {
   render() {
     return (
       <DateDiv>
-        <div style={{ marginLeft: '24px', fontSize: '12px' }}>Dates</div>
+        <div style={{
+          marginLeft: '24px', fontSize: '12px', color: 'rgb(72,72,72)', fontWeight: '600',
+        }}
+        >
+          Dates
+        </div>
         <DateBox>
           {/* <CheckInOut></CheckInOut> */}
-          <CheckInOut onClick={this.handleClickCheckIn}>Check-in</CheckInOut>
+          <CheckInOut style={{ paddingLeft: '8px' }} onClick={this.handleClickCheckIn}>Check-in</CheckInOut>
           --&gt;
-          <CheckInOut onClick={this.handleClickCheckOut}>Checkout</CheckInOut>
+          <CheckInOut style={{ paddingLeft: '7px' }} onClick={this.handleClickCheckOut}>Checkout</CheckInOut>
           {/* <Calendar /> */}
         </DateBox>
       </DateDiv>
