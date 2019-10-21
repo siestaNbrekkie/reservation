@@ -9,7 +9,9 @@ const CalendarBox = styled.div`
   box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
   background: rgb(255, 255, 255);
   border-radius: 3px;
-  font-family: sans-serif;
+  // font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  // font-family: 'Nunito Sans', sans-serif;
 `;
 
 const TopHeader = styled.div`
@@ -58,13 +60,18 @@ const Dates = styled.div`
   width: 40px;
   height: 39px;
   text-align: center;
-  border: 1px solid rgb(228, 231, 231);
+  border: 0.4px solid rgb(228, 231, 231);
   font-size: 14px;
   
   ${(props) => (props.available === false)
     && css`
       text-decoration: line-through;
       color: rgb(216,216,216);
+    `}
+  
+  ${(props) => (props.available === undefined)
+    && css`
+    border: none;
     `}
 
   ${(props) => (props.available)
