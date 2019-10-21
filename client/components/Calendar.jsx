@@ -10,8 +10,6 @@ const CalendarBox = styled.div`
   background: rgb(255, 255, 255);
   border-radius: 3px;
   font-family: 'Montserrat', sans-serif;
-  // font-family: 'Roboto', sans-serif;
-  // font-family: 'Nunito Sans', sans-serif;
 `;
 
 const TopHeader = styled.div`
@@ -25,13 +23,14 @@ const MonthAndYear = styled.div`
   margin-top: 27px;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
-  // font-family: 'Roboto', sans-serif;
-  // font-family: 'Nunito Sans', sans-serif;
   font-weight: bold;
   font-size: 18px;
 `;
 
 const ArrowBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 37px;
   height: 31px;
   margin-top: 18px;
@@ -44,7 +43,6 @@ const ArrowBox = styled.div`
 const Rows = styled.div`
   display: flex;
   justify-content: center;
-  // align-items: center;
   margin: 0.07px;
   `;
 
