@@ -20,7 +20,9 @@ const TopHeader = styled.div`
 const MonthAndYear = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 27px;
+  margin-bottom: 28px;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
