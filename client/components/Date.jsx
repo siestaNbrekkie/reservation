@@ -29,6 +29,7 @@ const CheckInOut = styled.div`
   width: 140px;
   height: 40px;
   color: rgb(143,143,143);
+  cursor: text;
 `;
 
 class Date extends React.Component {
