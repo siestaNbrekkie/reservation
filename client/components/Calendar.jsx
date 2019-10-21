@@ -12,7 +12,7 @@ const CalendarBox = styled.div`
   font-family: 'Montserrat', sans-serif;
   z-index: 1;
   position: absolute;
-  top: 215px;
+  top: 242px;
   left: 32px;
 `;
 

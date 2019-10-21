@@ -77,11 +77,9 @@ class Date extends React.Component {
           Dates
         </div>
         <DateBox>
-          {/* <CheckInOut></CheckInOut> */}
           <CheckInOut style={{ paddingLeft: '8px' }} onClick={this.handleClickCheckIn}>Check-in</CheckInOut>
           --&gt;
           <CheckInOut style={{ paddingLeft: '7px' }} onClick={this.handleClickCheckOut}>Checkout</CheckInOut>
-          {/* <Calendar /> */}
         </DateBox>
         {checkIn ? <Calendar /> : <div />}
       </DateDiv>
