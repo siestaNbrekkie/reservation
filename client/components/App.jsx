@@ -14,6 +14,16 @@ const ResverationsDiv = styled.div`
   border-radius: 3px;
 `;
 
+const DetailsDiv = styled.div`
+  padding-top: 18px;
+  margin-left: 25px;
+`;
+
+const Details = styled.span`
+  color: rgb(72,72,72);
+  font-family: 'Montserrat', sans-serif;
+`;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -56,18 +66,27 @@ class App extends React.Component {
 
     return (
       <ResverationsDiv>
-        <div>
-          $
-          {listingInfo.pricePerNight}
-          /night
-        </div>
-        <div>
-          *
-          {listingInfo.ratings}
-          (
-          {listingInfo.reviews}
-          reviews)
-        </div>
+        <DetailsDiv>
+          <div>
+            <Details style={{ fontWeight: 'bold', fontSize: '22px' }}>
+            $
+            {listingInfo.pricePerNight}
+            </Details>
+            <Details style={{ fontWeight: '600', fontSize: '12px' }}>
+              {'   '}
+            per night
+            </Details>
+          </div>
+          <div>
+            <Details style={{ fontWeight: 'bold', fontSize: '12px' }}>
+            *
+            {listingInfo.ratings}
+            </Details>
+            <Details style={{ fontSize: '12px', color: '#828282' }}>
+              {`  (${listingInfo.reviews} reviews)`}
+            </Details>
+          </div>
+        </DetailsDiv>
         <Date />
         <Guest />
         <ReserveButton handleSubmit={this.handleSubmit} />
