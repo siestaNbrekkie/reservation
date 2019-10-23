@@ -40,7 +40,7 @@ class App extends React.Component {
   }
 
   getListing() {
-    axios.get(`/api${window.location.pathname}`)
+    axios.get(`http://localhost:3002/api${window.location.pathname}`)
       .then((response) => {
         this.setState({
           listingInfo: response.data,
