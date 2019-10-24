@@ -131,9 +131,8 @@ class Calendar extends React.Component {
   }
 
   getDates() {
-    axios.get(`/api${window.location.pathname}dates`)
+    axios.get(`http://localhost:3002/api${window.location.pathname}dates`)
       .then((response) => {
-        console.log(response);
         this.setState({
           dates: response.data,
         });
