@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const ResverationsDiv = styled.div`
   width: 374px;
-  height: 456px;
+  // height: 456px;
+  height: auto;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
   background: rgb(255, 255, 255);
   border-radius: 3px;
@@ -86,7 +87,7 @@ export const DateDiv = styled.div`
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
-  padding-top: 112px;
+  // padding-top: 112px;
 `;
 
 export const DateBox = styled.div`
@@ -144,8 +145,6 @@ export const Button = styled.input`
   font-size: 16px;
   border: 1px solid rgb(234,85,92);
   border-radius: 4px;
-  margin-top: 24px;
-  margin-left: 24px;
-  margin-right: 24px;
+  margin: 15px 24px 15px 0px;
   cursor: pointer;
 `;

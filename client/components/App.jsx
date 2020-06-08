@@ -72,11 +72,12 @@ class App extends React.Component {
             </Details>
           </div>
         </DetailsDiv>
-        <svg width="28" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <svg width="50" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
           {/* <line x1="16" x2="25" y1="16" y2="25" stroke="#575757" strokeWidth="2" />
           <line x1="0" x2="25" y1="25" y2="25" stroke="#575757" strokeWidth="2" />
           <line x1="25" x2="16" y1="25" y2="34" stroke="#575757" strokeWidth="2" /> */}
-          {/* <path d="M 0 25 h 25 L 17 17 M 26 25 L 17 34" stroke="#575757" strokeWidth="2" fill="none" /> */}
+          {/* <path d="M 0 25 h 25 L 17 17 M 26 25 L 17 34" stroke="#575757" strokeWidth="2" fill="transparent" /> */}
+          {/* <path d="M 25 8 C 30 13, 30 13, 17 34" stroke="black" fill="transparent" /> */}
         </svg>
         <Date />
         <Guest />
