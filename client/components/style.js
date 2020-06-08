@@ -10,7 +10,10 @@ export const ResverationsDiv = styled.div`
 
 export const DetailsDiv = styled.div`
   padding-top: 18px;
+  padding-bottom: 10px;
   margin-left: 25px;
+  margin-right: 25px;
+  border-bottom: 1px solid rgb(228, 231, 231);
 `;
 
 export const Details = styled.span`
