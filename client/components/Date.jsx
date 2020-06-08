@@ -1,36 +1,6 @@
 import React from 'react';
 import Calendar from './Calendar';
-import styled from 'styled-components';
-
-const DateDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-family: 'Montserrat', sans-serif;
-  padding-top: 112px;
-`;
-
-const DateBox = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 324px;
-  height: 40px;
-  margin-left: 24px;
-  margin-right: 24px;
-  border: 1px solid rgb(228, 231, 231);
-  border-radius: 1px;
-  font-size: 16px;
-`;
-
-const CheckInOut = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 140px;
-  height: 40px;
-  color: rgb(143,143,143);
-  cursor: text;
-`;
+import { DateDiv, DateBox, CheckInOut } from './style';
 
 class Date extends React.Component {
   constructor(props) {
@@ -78,7 +48,13 @@ class Date extends React.Component {
         </div>
         <DateBox>
           <CheckInOut style={{ paddingLeft: '8px' }} onClick={this.handleClickCheckIn}>Check-in</CheckInOut>
-          --&gt;
+          {/* --&gt; */}
+          <svg width="19" height="19" viewBox="0 0 1000 1000">
+            <path
+              d="M694 242l249 250c12 11 12 21 1 32L694 773c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210-210H68c-13 0-23-10-23-23s10-23 23-23h806L662 275c-21-22 11-54 32-33z"
+              fill="rgb(72,72,72)"
+            />
+          </svg>
           <CheckInOut style={{ paddingLeft: '7px' }} onClick={this.handleClickCheckOut}>Checkout</CheckInOut>
         </DateBox>
         {checkIn ? <Calendar /> : <div />}

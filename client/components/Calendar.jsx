@@ -1,67 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import styled, { css } from 'styled-components';
-
-const CalendarBox = styled.div`
-  width: 333px;
-  height: 332px;
-  color: rgb(72, 72, 72);
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
-  background: rgb(255, 255, 255);
-  border-radius: 3px;
-  font-family: 'Montserrat', sans-serif;
-  z-index: 1;
-  position: absolute;
-  top: 242px;
-  left: 32px;
-`;
-
-const TopHeader = styled.div`
-  display: flex;
-  justify-content: space-around;
-`;
-
-const MonthAndYear = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 27px;
-  margin-bottom: 28px;
-  text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  font-size: 18px;
-`;
-
-const ArrowBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 37px;
-  height: 31px;
-  margin-top: 18px;
-  margin-bottom: 18px;
-  border: 1px solid rgb(228, 231, 231);
-  border-radius: 3px;
-  cursor: pointer;
-`;
-
-const Rows = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 0.07px;
-  `;
-
-const Days = styled.div`
-  width: 41px;
-  height: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgb(117,117,117);
-  font-size: 11.67px;
-  margin: 0.07px;
-`;
+import {
+  CalendarBox,
+  TopHeader,
+  MonthAndYear,
+  ArrowBox,
+  Rows,
+  Days,
+} from './style';
 
 const Dates = styled.div`
   display: flex;
@@ -371,7 +318,12 @@ class Calendar extends React.Component {
       <CalendarBox>
         <TopHeader>
           <ArrowBox onClick={this.handleLeftClick}>
-            &lt;--
+            <svg width="19" height="19" viewBox="0 0 1000 1000">
+              <path
+                d="M 336 275 L 126 485 h 806 c 13 0 23 10 23 23 s -10 23 -23 23 H 126 l 210 210 c 11 11 11 21 0 32 c -5 5 -10 7 -16 7 s -11 -2 -16 -7 L 55 524 c -11 -11 -11 -21 0 -32 l 249 -249 c 21 -22 53 10 32 32 Z"
+                fill="#8C8C8C"
+              />
+            </svg>
           </ArrowBox>
           <MonthAndYear>
             {Months[currentMonth]}
@@ -379,7 +331,12 @@ class Calendar extends React.Component {
             {currentYear}
           </MonthAndYear>
           <ArrowBox onClick={this.handleRightClick}>
-            --&gt;
+            <svg width="19" height="19" viewBox="0 0 1000 1000">
+              <path
+                d="M694 242l249 250c12 11 12 21 1 32L694 773c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210-210H68c-13 0-23-10-23-23s10-23 23-23h806L662 275c-21-22 11-54 32-33z"
+                fill="#8C8C8C"
+              />
+            </svg>
           </ArrowBox>
         </TopHeader>
         <Rows>

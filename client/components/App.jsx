@@ -1,28 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
+import { ResverationsDiv, DetailsDiv, Details } from './style';
 
 import Date from './Date';
 import Guest from './Guest';
 import ReserveButton from './ReserveButton';
 
-const ResverationsDiv = styled.div`
-  width: 374px;
-  height: 456px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
-  background: rgb(255, 255, 255);
-  border-radius: 3px;
-`;
-
-const DetailsDiv = styled.div`
-  padding-top: 18px;
-  margin-left: 25px;
-`;
-
-const Details = styled.span`
-  color: rgb(72,72,72);
-  font-family: 'Montserrat', sans-serif;
-`;
 
 class App extends React.Component {
   constructor(props) {
@@ -89,6 +72,12 @@ class App extends React.Component {
             </Details>
           </div>
         </DetailsDiv>
+        <svg width="28" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          {/* <line x1="16" x2="25" y1="16" y2="25" stroke="#575757" strokeWidth="2" />
+          <line x1="0" x2="25" y1="25" y2="25" stroke="#575757" strokeWidth="2" />
+          <line x1="25" x2="16" y1="25" y2="34" stroke="#575757" strokeWidth="2" /> */}
+          {/* <path d="M 0 25 h 25 L 17 17 M 26 25 L 17 34" stroke="#575757" strokeWidth="2" fill="none" /> */}
+        </svg>
         <Date />
         <Guest />
         <ReserveButton handleSubmit={this.handleSubmit} />
