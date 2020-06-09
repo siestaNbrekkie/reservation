@@ -87,7 +87,6 @@ export const DateDiv = styled.div`
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
-  // padding-top: 112px;
 `;
 
 export const DateBox = styled.div`
@@ -111,6 +110,10 @@ export const CheckInOut = styled.div`
   height: 40px;
   color: rgb(143,143,143);
   cursor: text;
+
+  &:hover {
+    background-color: #B1ECED;
+  }
 `;
 
 export const GuestDiv = styled.div`
