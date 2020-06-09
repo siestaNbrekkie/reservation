@@ -2,6 +2,7 @@ import React from 'react';
 import {
   GuestDropdown,
   GuestChoices,
+  TypeOfGuest,
   GuestButtons,
   CircleButton,
 } from './style';
@@ -10,14 +11,9 @@ const GuestForm = () => {
   return (
     <GuestDropdown>
       <GuestChoices>
-        <div style={{
-          marginLeft: '18px',
-          fontSize: 16,
-          fontWeight: 'bold',
-        }}
-        >
+        <TypeOfGuest>
           Adults
-        </div>
+        </TypeOfGuest>
         <GuestButtons>
           <CircleButton>-</CircleButton>
           <span style={{ textAlign: 'center', lineHeight: '30px' }}>
@@ -27,10 +23,28 @@ const GuestForm = () => {
         </GuestButtons>
       </GuestChoices>
       <GuestChoices>
-        Children
+        <TypeOfGuest>
+          Children
+        </TypeOfGuest>
+        <GuestButtons>
+          <CircleButton>-</CircleButton>
+          <span style={{ textAlign: 'center', lineHeight: '30px' }}>
+            1
+          </span>
+          <CircleButton>+</CircleButton>
+        </GuestButtons>
       </GuestChoices>
       <GuestChoices>
-        Infants
+        <TypeOfGuest>
+          Infants
+        </TypeOfGuest>
+        <GuestButtons>
+          <CircleButton>-</CircleButton>
+          <span style={{ textAlign: 'center', lineHeight: '30px' }}>
+            1
+          </span>
+          <CircleButton>+</CircleButton>
+        </GuestButtons>
       </GuestChoices>
       <div>Min guest notice</div>
       <div>Close</div>
