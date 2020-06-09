@@ -140,7 +140,10 @@ export const GuestBox = styled.div`
 `;
 
 export const GuestChoices = styled.div`
-  width: 333px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 325px;
   height: 332px;
   color: rgb(72, 72, 72);
   box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
@@ -149,8 +152,9 @@ export const GuestChoices = styled.div`
   font-family: 'Montserrat', sans-serif;
   z-index: 1;
   position: absolute;
-  top: 242px;
-  left: 32px;
+  top: 271px;
+  left: 33px;
+  border-top: 2px solid #008489;
 `;
 
 export const Button = styled.input`
