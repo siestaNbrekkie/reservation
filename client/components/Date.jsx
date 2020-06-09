@@ -10,11 +10,13 @@ class Date extends React.Component {
       checkIn: false,
       checkOut: false,
       hover: false,
+      hoverCheckout: false,
     };
 
     this.handleClickCheckIn = this.handleClickCheckIn.bind(this);
     this.handleClickCheckOut = this.handleClickCheckOut.bind(this);
     this.handleHover = this.handleHover.bind(this);
+    this.handleHoverCheckout = this.handleHoverCheckout.bind(this);
   }
 
   handleClickCheckIn(event) {
@@ -37,18 +39,41 @@ class Date extends React.Component {
     });
   }
 
-  handleHover(event) {
+  handleHover() {
+    const { hover } = this.state;
+
     this.setState({
-      hover: !this.state.hover,
-    })
+      hover: !hover,
+    });
+  }
+
+  handleHoverCheckout() {
+    const { hoverCheckout } = this.state;
+
+    this.setState({
+      hoverCheckout: !hoverCheckout,
+    });
   }
 
   render() {
-    const { checkIn, hover } = this.state;
+    const {
+      checkIn,
+      checkOut,
+      hover,
+      hoverCheckout,
+    } = this.state;
+
     let defaultBackground = 'transparent';
+    let defaultBackgroundCheckout = 'transparent';
 
     if (hover || checkIn) {
       defaultBackground = '#B1ECED';
+    }
+
+    if (!hoverCheckout) {
+      defaultBackgroundCheckout = 'transparent';
+    } else if (hoverCheckout || checkOut) {
+      defaultBackgroundCheckout = '#B1ECED';
     }
 
     return (
@@ -60,12 +85,20 @@ class Date extends React.Component {
           Dates
         </div>
         <DateBox>
-          <CheckInOut style={{ paddingLeft: '8px', backgroundColor: `${defaultBackground}` }} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} onClick={this.handleClickCheckIn}>Check-in</CheckInOut>
+          <CheckInOut
+            style={{ paddingLeft: '8px', backgroundColor: `${defaultBackground}` }}
+            onMouseEnter={this.handleHover}
+            onMouseLeave={this.handleHover}
+            onClick={this.handleClickCheckIn}>Check-in</CheckInOut>
           {/* --&gt; */}
           <svg width="27" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <path d="M 0 25 h 25 L 19 17 M 26 25 L 19 34" stroke="#575757" strokeWidth="1" fill="transparent" />
           </svg>
-          <CheckInOut style={{ paddingLeft: '7px' }} onClick={this.handleClickCheckOut}>Checkout</CheckInOut>
+          <CheckInOut
+            style={{ paddingLeft: '7px', backgroundColor: `${defaultBackgroundCheckout}` }}
+            onMouseEnter={this.handleHoverCheckout}
+            onMouseLeave={this.handleHoverCheckout}
+            onClick={this.handleClickCheckOut}>Checkout</CheckInOut>
         </DateBox>
         {checkIn ? <Calendar /> : <div />}
       </DateDiv>
