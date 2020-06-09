@@ -87,6 +87,7 @@ export const DateDiv = styled.div`
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
+  margin-top: 60px;
 `;
 
 export const DateBox = styled.div`
