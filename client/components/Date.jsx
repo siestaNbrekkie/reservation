@@ -9,10 +9,12 @@ class Date extends React.Component {
     this.state = {
       checkIn: false,
       checkOut: false,
+      hover: false,
     };
 
     this.handleClickCheckIn = this.handleClickCheckIn.bind(this);
     this.handleClickCheckOut = this.handleClickCheckOut.bind(this);
+    this.handleHover = this.handleHover.bind(this);
   }
 
   handleClickCheckIn(event) {
@@ -35,8 +37,19 @@ class Date extends React.Component {
     });
   }
 
+  handleHover(event) {
+    this.setState({
+      hover: !this.state.hover,
+    })
+  }
+
   render() {
-    const { checkIn } = this.state;
+    const { checkIn, hover } = this.state;
+    let defaultBackground = 'transparent';
+
+    if (hover || checkIn) {
+      defaultBackground = '#B1ECED';
+    }
 
     return (
       <DateDiv>
@@ -47,7 +60,7 @@ class Date extends React.Component {
           Dates
         </div>
         <DateBox>
-          <CheckInOut style={{ paddingLeft: '8px' }} onClick={this.handleClickCheckIn}>Check-in</CheckInOut>
+          <CheckInOut style={{ paddingLeft: '8px', backgroundColor: `${defaultBackground}` }} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} onClick={this.handleClickCheckIn}>Check-in</CheckInOut>
           {/* --&gt; */}
           <svg width="27" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <path d="M 0 25 h 25 L 19 17 M 26 25 L 19 34" stroke="#575757" strokeWidth="1" fill="transparent" />
