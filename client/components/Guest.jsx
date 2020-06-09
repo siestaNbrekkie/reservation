@@ -1,4 +1,5 @@
 import React from 'react';
+import GuestForm from './GuestForm';
 import { GuestDiv, GuestBox } from './style';
 
 class Guest extends React.Component {
@@ -7,6 +8,7 @@ class Guest extends React.Component {
 
     this.state = {
       clicked: false,
+      numOfGuests: 1,
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -21,7 +23,7 @@ class Guest extends React.Component {
   }
 
   render() {
-    const { clicked } = this.state;
+    const { clicked, numOfGuests } = this.state;
 
     let arrow = <svg width="20" height="20" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -30,6 +32,7 @@ class Guest extends React.Component {
         fill="none"
       />
     </svg>
+    let guest = 'guest';
 
     if (clicked) {
       arrow = <svg width="20" height="20" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -41,6 +44,12 @@ class Guest extends React.Component {
       </svg>
     }
 
+    if (numOfGuests > 1) {
+      guest += 's';
+    } else {
+      guest = 'guest';
+    }
+
     return (
       <GuestDiv>
         <div style={{
@@ -50,7 +59,7 @@ class Guest extends React.Component {
           Guests
         </div>
         <GuestBox onClick={this.handleClick}>
-          <div>1 guest</div>
+          <div>{numOfGuests} guest</div>
           <div style={{
             marginRight: '16px', fontSize: '16px', color: 'rgb(72,72,72)', fontWeight: '600',
           }}
@@ -65,6 +74,7 @@ class Guest extends React.Component {
             </div>
           </div>
         </GuestBox>
+        {clicked ? <GuestForm /> : <div />}
       </GuestDiv>
     );
   }
