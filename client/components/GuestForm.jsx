@@ -1,15 +1,31 @@
 import React from 'react';
-import { GuestChoices } from './style';
+import { GuestDropdown, GuestChoices, GuestButtons } from './style';
 
 const GuestForm = () => {
   return (
-    <GuestChoices>
-      <div>Adults</div>
-      <div>Children</div>
-      <div>Infants</div>
+    <GuestDropdown>
+      <GuestChoices>
+        <div style={{
+          marginLeft: '18px',
+          fontSize: 16,
+          fontWeight: 'bold',
+        }}
+        >
+          Adults
+        </div>
+        <GuestButtons>
+          hey
+        </GuestButtons>
+      </GuestChoices>
+      <GuestChoices>
+        Children
+      </GuestChoices>
+      <GuestChoices>
+        Infants
+      </GuestChoices>
       <div>Min guest notice</div>
       <div>Close</div>
-    </GuestChoices>
+    </GuestDropdown>
   );
 };
 

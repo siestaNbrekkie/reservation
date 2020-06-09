@@ -139,7 +139,7 @@ export const GuestBox = styled.div`
   padding-left: 8px;
 `;
 
-export const GuestChoices = styled.div`
+export const GuestDropdown = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -155,6 +155,17 @@ export const GuestChoices = styled.div`
   top: 271px;
   left: 33px;
   border-top: 2px solid #008489;
+`;
+
+export const GuestChoices = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const GuestButtons = styled.div`
+  width: 98px;
+  border: 1px solid rgb(234,85,92);
+  margin-right: 18px;
 `;
 
 export const Button = styled.input`
