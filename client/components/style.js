@@ -163,9 +163,23 @@ export const GuestChoices = styled.div`
 `;
 
 export const GuestButtons = styled.div`
-  width: 98px;
-  border: 1px solid rgb(234,85,92);
+  display: flex;
+  justify-content: space-between;
+  width: 106px;
   margin-right: 18px;
+`;
+
+export const CircleButton = styled.div`
+  width: 32px;
+  height: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  line-height: 30px;
+  border: 1px solid black;
+  border-radius: 50%;
+  cursor: pointer;
 `;
 
 export const Button = styled.input`

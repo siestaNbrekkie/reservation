@@ -1,5 +1,10 @@
 import React from 'react';
-import { GuestDropdown, GuestChoices, GuestButtons } from './style';
+import {
+  GuestDropdown,
+  GuestChoices,
+  GuestButtons,
+  CircleButton,
+} from './style';
 
 const GuestForm = () => {
   return (
@@ -14,7 +19,11 @@ const GuestForm = () => {
           Adults
         </div>
         <GuestButtons>
-          hey
+          <CircleButton>-</CircleButton>
+          <span style={{ textAlign: 'center', lineHeight: '30px' }}>
+            1
+          </span>
+          <CircleButton>+</CircleButton>
         </GuestButtons>
       </GuestChoices>
       <GuestChoices>
