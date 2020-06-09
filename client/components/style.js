@@ -154,7 +154,7 @@ export const GuestChoices = styled.div`
 `;
 
 export const Button = styled.input`
-  width: 326px;
+  width: 324px;
   height: 46px;
   color: white;
   background-color: rgb(234,85,92);
@@ -163,6 +163,6 @@ export const Button = styled.input`
   font-size: 16px;
   border: 1px solid rgb(234,85,92);
   border-radius: 4px;
-  margin: 15px 24px 15px 0px;
+  margin: 15px 24px 15px 1px;
   cursor: pointer;
 `;

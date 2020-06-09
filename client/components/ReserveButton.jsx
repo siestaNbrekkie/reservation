@@ -8,7 +8,7 @@ const ReserveButton = (props) => {
       borderTop: '1px solid rgb(228, 231, 231)',
       marginTop: '35px',
       marginLeft: '24px',
-      marginRight: '24px',
+      marginRight: '26px',
     }}
     >
       <form onSubmit={handleSubmit}>
