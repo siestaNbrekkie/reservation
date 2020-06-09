@@ -15,6 +15,7 @@ const GuestForm = () => {
       position: 'absolute',
       top: '271px',
       left: '33px',
+      borderTop: '2px solid #008489',
     }}
     >
       hi
