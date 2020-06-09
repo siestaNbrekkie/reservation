@@ -32,7 +32,7 @@ export const CalendarBox = styled.div`
   font-family: 'Montserrat', sans-serif;
   z-index: 1;
   position: absolute;
-  top: 242px;
+  top: 204px;
   left: 32px;
 `;
 
