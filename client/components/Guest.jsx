@@ -68,6 +68,7 @@ class Guest extends React.Component {
               display: 'flex',
               justifyContent: 'flex-end',
               alignItems: 'center',
+              cursor: 'pointer',
             }}
             >
               {arrow}
