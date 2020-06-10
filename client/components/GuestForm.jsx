@@ -5,6 +5,7 @@ import {
   TypeOfGuest,
   GuestButtons,
   CircleButton,
+  CloseButton
 } from './style';
 
 const GuestForm = (props) => {
@@ -49,12 +50,16 @@ const GuestForm = (props) => {
         </GuestButtons>
       </GuestChoices>
       <div style={{
-        fontSize: 10,
+        fontSize: 14,
+        marginLeft: '14px',
+        color: '#929292',
       }}
       >
         {maxGuest} guests maximum. Infants don’t count toward the number of guests.
       </div>
-      <div>Close</div>
+      <CloseButton>
+        Close
+      </CloseButton>
     </GuestDropdown>
   );
 };

@@ -184,6 +184,21 @@ export const CircleButton = styled.div`
   cursor: pointer;
 `;
 
+export const CloseButton = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-right: 24px;
+  font-size: 16;
+  font-weight: bold;
+  color: #008489;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 export const Button = styled.input`
   width: 324px;
   height: 46px;
