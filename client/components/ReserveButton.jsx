@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button } from './style';
 
 const ReserveButton = (props) => {
@@ -16,6 +17,14 @@ const ReserveButton = (props) => {
       </form>
     </div>
   );
+};
+
+ReserveButton.defaultProps = {
+  handleSubmit: () => {},
+};
+
+ReserveButton.propTypes = {
+  handleSubmit: PropTypes.func,
 };
 
 export default ReserveButton;
