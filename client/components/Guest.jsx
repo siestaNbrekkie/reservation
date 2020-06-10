@@ -9,14 +9,21 @@ class Guest extends React.Component {
     this.state = {
       clicked: false,
       numOfGuests: 1,
+      adults: 1,
+      children: 0,
+      infants: 0,
       maxGuest: 0,
       lowerBoundGuestNum: 0,
       serviceFee: 0,
     };
 
     this.handleClick = this.handleClick.bind(this);
-    this.addGuests = this.addGuests.bind(this);
-    this.subtractGuests = this.subtractGuests.bind(this);
+    this.addAdults = this.addAdults.bind(this);
+    this.subtractAdults = this.subtractAdults.bind(this);
+    this.addChildren = this.addChildren.bind(this);
+    this.subtractChildren = this.subtractChildren.bind(this);
+    this.addInfants = this.addInfants.bind(this);
+    this.subtractInfants = this.subtractInfants.bind(this);
   }
 
   handleClick(event) {
@@ -32,24 +39,69 @@ class Guest extends React.Component {
     });
   }
 
-  addGuests() {
-    const { numOfGuests } = this.state;
+  addAdults() {
+    const { numOfGuests, adults } = this.state;
 
     this.setState({
+      adults: adults + 1,
       numOfGuests: numOfGuests + 1,
     });
   }
 
-  subtractGuests() {
-    const { numOfGuests } = this.state;
+  subtractAdults() {
+    const { numOfGuests, adults } = this.state;
 
     this.setState({
+      adults: adults - 1,
       numOfGuests: numOfGuests - 1,
     });
   }
 
+  addChildren() {
+    const { numOfGuests, children } = this.state;
+
+    this.setState({
+      children: children + 1,
+      numOfGuests: numOfGuests + 1,
+    });
+  }
+
+  subtractChildren() {
+    const { numOfGuests, children } = this.state;
+
+    this.setState({
+      children: children - 1,
+      numOfGuests: numOfGuests - 1,
+    });
+  }
+
+  addInfants() {
+    const { infants } = this.state;
+
+    this.setState({
+      infants: infants + 1,
+    });
+  }
+
+  subtractInfants() {
+    const { infants } = this.state;
+
+    this.setState({
+      infants: infants - 1,
+    });
+  }
+
   render() {
-    const { clicked, numOfGuests, maxGuest, lowerBoundGuestNum, serviceFee } = this.state;
+    const {
+      clicked,
+      numOfGuests,
+      adults,
+      children,
+      infants,
+      maxGuest,
+      lowerBoundGuestNum,
+      serviceFee,
+    } = this.state;
 
     let arrow = <svg width="20" height="20" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -58,7 +110,10 @@ class Guest extends React.Component {
         fill="none"
       />
     </svg>
+
     let guest = 'guest';
+    let infantStr = `${infants} infant`;
+    let strOfGuests = '';
 
     if (clicked) {
       arrow = <svg width="20" height="20" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -76,6 +131,18 @@ class Guest extends React.Component {
       guest = 'guest';
     }
 
+    if (infants > 1) {
+      infantStr += 's';
+    } else if (infants === 0) {
+      infantStr = '';
+    }
+
+    if (!infants) {
+      strOfGuests = `${numOfGuests} ${guest}`;
+    } else if (infants > 0) {
+      strOfGuests = `${numOfGuests} ${guest}, ${infantStr}`;
+    }
+
     return (
       <GuestDiv>
         <div style={{
@@ -85,7 +152,7 @@ class Guest extends React.Component {
           Guests
         </div>
         <GuestBox onClick={this.handleClick}>
-          <div>{`${numOfGuests} ${guest}`}</div>
+          <div>{strOfGuests}</div>
           <div style={{
             marginRight: '16px', fontSize: '16px', color: 'rgb(72,72,72)', fontWeight: '600',
           }}
@@ -104,12 +171,19 @@ class Guest extends React.Component {
         {clicked ? (
           <GuestForm
             numOfGuests={numOfGuests}
+            adults={adults}
+            children={children}
+            infants={infants}
             maxGuest={maxGuest}
             lowerBoundGuestNum={lowerBoundGuestNum}
             serviceFee={serviceFee}
             onClick={this.handleClick}
-            addGuests={this.addGuests}
-            subtractGuests={this.subtractGuests}
+            addAdults={this.addAdults}
+            subtractAdults={this.subtractAdults}
+            addChildren={this.addChildren}
+            subtractChildren={this.subtractChildren}
+            addInfants={this.addInfants}
+            subtractInfants={this.subtractInfants}
           />
         ) : <div />}
       </GuestDiv>

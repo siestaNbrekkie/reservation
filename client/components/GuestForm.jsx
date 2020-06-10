@@ -9,7 +9,19 @@ import {
 } from './style';
 
 const GuestForm = (props) => {
-  const { numOfGuests, maxGuest, onClick, addGuests, subtractGuests } = props;
+  const {
+    adults,
+    children,
+    infants,
+    maxGuest,
+    onClick,
+    addAdults,
+    subtractAdults,
+    addChildren,
+    subtractChildren,
+    addInfants,
+    subtractInfants,
+  } = props;
 
   return (
     <GuestDropdown>
@@ -20,11 +32,11 @@ const GuestForm = (props) => {
           </span>
         </TypeOfGuest>
         <GuestButtons>
-          <CircleButton onClick={subtractGuests}>-</CircleButton>
+          <CircleButton onClick={subtractAdults}>-</CircleButton>
           <span style={{ textAlign: 'center', lineHeight: '30px' }}>
-            {numOfGuests}
+            {adults}
           </span>
-          <CircleButton onClick={addGuests}>+</CircleButton>
+          <CircleButton onClick={addAdults}>+</CircleButton>
         </GuestButtons>
       </GuestChoices>
       <GuestChoices>
@@ -37,11 +49,11 @@ const GuestForm = (props) => {
           </span>
         </TypeOfGuest>
         <GuestButtons>
-          <CircleButton>-</CircleButton>
+          <CircleButton onClick={subtractChildren}>-</CircleButton>
           <span style={{ textAlign: 'center', lineHeight: '30px' }}>
-            1
+            {children}
           </span>
-          <CircleButton>+</CircleButton>
+          <CircleButton onClick={addChildren}>+</CircleButton>
         </GuestButtons>
       </GuestChoices>
       <GuestChoices>
@@ -54,11 +66,11 @@ const GuestForm = (props) => {
           </span>
         </TypeOfGuest>
         <GuestButtons>
-          <CircleButton>-</CircleButton>
+          <CircleButton onClick={subtractInfants}>-</CircleButton>
           <span style={{ textAlign: 'center', lineHeight: '30px' }}>
-            1
+            {infants}
           </span>
-          <CircleButton>+</CircleButton>
+          <CircleButton onClick={addInfants}>+</CircleButton>
         </GuestButtons>
       </GuestChoices>
       <div style={{
