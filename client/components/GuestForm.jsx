@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   GuestDropdown,
   GuestChoices,
@@ -145,5 +146,28 @@ const GuestForm = (props) => {
     </GuestDropdown>
   );
 };
+
+GuestForm.defaultProps = {
+  numOfGuests: 0,
+  adults: 0,
+  childrenGuests: 0,
+  infants: 0,
+  maxGuest: 0,
+  onClick: () => {},
+  addGuests: () => {},
+  subtractGuests: () => {},
+};
+
+GuestForm.propTypes = {
+  numOfGuests: PropTypes.number,
+  adults: PropTypes.number,
+  childrenGuests: PropTypes.number,
+  infants: PropTypes.number,
+  maxGuest: PropTypes.number,
+  onClick: PropTypes.func,
+  addGuests: PropTypes.func,
+  subtractGuests: PropTypes.func,
+};
+
 
 export default GuestForm;
