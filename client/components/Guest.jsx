@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import GuestForm from './GuestForm';
 import { GuestDiv, GuestBox } from './style';
 
@@ -44,7 +45,7 @@ class Guest extends React.Component {
       numOfGuests: (value === 'infants' ? prevState.numOfGuests : prevState.numOfGuests + 1),
     }));
   }
-  
+
   subtractGuests(event) {
     let value = event.target.id;
     value = value.slice(0, value.length - 8);
@@ -67,26 +68,30 @@ class Guest extends React.Component {
       serviceFee,
     } = this.state;
 
-    let arrow = <svg width="20" height="20" version="1.1" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M 4 4 L 10 13 L 16 4"
-        stroke="rgb(72,72,72)"
-        fill="none"
-      />
-    </svg>
+    let arrow = (
+      <svg width="20" height="20" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M 4 4 L 10 13 L 16 4"
+          stroke="rgb(72,72,72)"
+          fill="none"
+        />
+      </svg>
+    );
 
     let guest = 'guest';
     let infantStr = `${infants} infant`;
     let strOfGuests = '';
 
     if (clicked) {
-      arrow = <svg width="20" height="20" version="1.1" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M 4 16 L 10 6 L 16 16"
-          stroke="rgb(72,72,72)"
-          fill="none"
-        />
-      </svg>
+      arrow = (
+        <svg width="20" height="20" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M 4 16 L 10 6 L 16 16"
+            stroke="rgb(72,72,72)"
+            fill="none"
+          />
+        </svg>
+      );
     }
 
     if (numOfGuests > 1) {
@@ -150,5 +155,17 @@ class Guest extends React.Component {
     );
   }
 }
+
+Guest.defaultProps = {
+  maxGuest: 0,
+  lowerBoundGuestNum: 0,
+  serviceFee: 0,
+};
+
+Guest.propTypes = {
+  maxGuest: PropTypes.number,
+  lowerBoundGuestNum: PropTypes.number,
+  serviceFee: PropTypes.number,
+};
 
 export default Guest;
