@@ -9,21 +9,29 @@ class Guest extends React.Component {
     this.state = {
       clicked: false,
       numOfGuests: 1,
+      maxGuest: 0,
+      lowerBoundGuestNum: 0,
+      serviceFee: 0,
     };
 
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(event) {
+    const { clicked } = this.state;
+    const { maxGuest, lowerBoundGuestNum, serviceFee } = this.props;
     event.preventDefault();
 
     this.setState({
-      clicked: !this.state.clicked,
+      clicked: !clicked,
+      maxGuest,
+      lowerBoundGuestNum,
+      serviceFee,
     });
   }
 
   render() {
-    const { clicked, numOfGuests } = this.state;
+    const { clicked, numOfGuests, maxGuest, lowerBoundGuestNum, serviceFee } = this.state;
 
     let arrow = <svg width="20" height="20" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -75,7 +83,7 @@ class Guest extends React.Component {
             </div>
           </div>
         </GuestBox>
-        {clicked ? <GuestForm /> : <div />}
+        {clicked ? <GuestForm maxGuest={maxGuest} lowerBoundGuestNum={lowerBoundGuestNum} serviceFee={serviceFee} /> : <div />}
       </GuestDiv>
     );
   }
