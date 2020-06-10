@@ -21,7 +21,6 @@ class Date extends React.Component {
 
   handleClickCheckIn(event) {
     event.preventDefault();
-    console.log('checkIN!');
 
     this.setState({
       checkIn: true,
@@ -31,7 +30,6 @@ class Date extends React.Component {
 
   handleClickCheckOut(event) {
     event.preventDefault();
-    console.log('checkOUT!');
 
     this.setState({
       checkOut: true,
@@ -89,7 +87,10 @@ class Date extends React.Component {
             style={{ paddingLeft: '8px', backgroundColor: `${defaultBackground}` }}
             onMouseEnter={this.handleHover}
             onMouseLeave={this.handleHover}
-            onClick={this.handleClickCheckIn}>Check-in</CheckInOut>
+            onClick={this.handleClickCheckIn}
+          >
+            Check-in
+          </CheckInOut>
           {/* --&gt; */}
           <svg width="27" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <path d="M 0 25 h 25 L 19 17 M 26 25 L 19 34" stroke="#575757" strokeWidth="1" fill="transparent" />
@@ -98,7 +99,10 @@ class Date extends React.Component {
             style={{ paddingLeft: '7px', backgroundColor: `${defaultBackgroundCheckout}` }}
             onMouseEnter={this.handleHoverCheckout}
             onMouseLeave={this.handleHoverCheckout}
-            onClick={this.handleClickCheckOut}>Checkout</CheckInOut>
+            onClick={this.handleClickCheckOut}
+          >
+            Checkout
+          </CheckInOut>
         </DateBox>
         {checkIn ? <Calendar /> : <div />}
       </DateDiv>
