@@ -159,9 +159,10 @@ export const GuestChoices = styled.div`
 `;
 
 export const TypeOfGuest = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-left: 18px;
   font-size: 16;
-  font-weight: bold;
 `;
 
 export const GuestButtons = styled.div`

@@ -15,7 +15,9 @@ const GuestForm = (props) => {
     <GuestDropdown>
       <GuestChoices>
         <TypeOfGuest>
-          Adults
+          <span style={{ textAlign: 'center', lineHeight: '30px', fontWeight: 'bold' }}>
+            Adults
+          </span>
         </TypeOfGuest>
         <GuestButtons>
           <CircleButton>-</CircleButton>
@@ -27,7 +29,12 @@ const GuestForm = (props) => {
       </GuestChoices>
       <GuestChoices>
         <TypeOfGuest>
-          Children
+          <span style={{ fontWeight: 'bold' }}>
+            Children
+          </span>
+          <span style={{ fontSize: 14 }}>
+            Ages 2-12
+          </span>
         </TypeOfGuest>
         <GuestButtons>
           <CircleButton>-</CircleButton>
@@ -39,7 +46,12 @@ const GuestForm = (props) => {
       </GuestChoices>
       <GuestChoices>
         <TypeOfGuest>
-          Infants
+          <span style={{ fontWeight: 'bold' }}>
+            Infants
+          </span>
+          <span style={{ fontSize: 14 }}>
+            Under 2
+          </span>
         </TypeOfGuest>
         <GuestButtons>
           <CircleButton>-</CircleButton>
