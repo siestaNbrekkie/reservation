@@ -7,7 +7,9 @@ import {
   CircleButton,
 } from './style';
 
-const GuestForm = () => {
+const GuestForm = (props) => {
+  const { maxGuest } = props;
+
   return (
     <GuestDropdown>
       <GuestChoices>
@@ -46,7 +48,12 @@ const GuestForm = () => {
           <CircleButton>+</CircleButton>
         </GuestButtons>
       </GuestChoices>
-      <div>Min guest notice</div>
+      <div style={{
+        fontSize: 10,
+      }}
+      >
+        {maxGuest} guests maximum. Infants don’t count toward the number of guests.
+      </div>
       <div>Close</div>
     </GuestDropdown>
   );
