@@ -12,7 +12,7 @@ import {
 const GuestForm = (props) => {
   const {
     adults,
-    children,
+    childrenGuests,
     infants,
     maxGuest,
     onClick,
@@ -52,11 +52,11 @@ const GuestForm = (props) => {
           </span>
         </TypeOfGuest>
         <GuestButtons>
-          <CircleButton id="childrenSubtract" onClick={subtractGuests}>-</CircleButton>
+          <CircleButton id="childrenGuestsSubtract" onClick={subtractGuests}>-</CircleButton>
           <NumberSpan>
-            {children}
+            {childrenGuests}
           </NumberSpan>
-          <CircleButton id="childrenAdd" onClick={addGuests}>+</CircleButton>
+          <CircleButton id="childrenGuestsAdd" onClick={addGuests}>+</CircleButton>
         </GuestButtons>
       </GuestChoices>
       <GuestChoices>
@@ -82,7 +82,9 @@ const GuestForm = (props) => {
         color: '#929292',
       }}
       >
-        {maxGuest} guests maximum. Infants don’t count toward the number of guests.
+        {maxGuest}
+        {' '}
+        guests maximum. Infants don’t count toward the number of guests.
       </div>
       <CloseButton onClick={onClick}>
         Close

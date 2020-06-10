@@ -10,7 +10,7 @@ class Guest extends React.Component {
       clicked: false,
       numOfGuests: 1,
       adults: 1,
-      children: 0,
+      childrenGuests: 0,
       infants: 0,
       maxGuest: 0,
       lowerBoundGuestNum: 0,
@@ -44,7 +44,7 @@ class Guest extends React.Component {
       numOfGuests: (value === 'infants' ? prevState.numOfGuests : prevState.numOfGuests + 1),
     }));
   }
-
+  
   subtractGuests(event) {
     let value = event.target.id;
     value = value.slice(0, value.length - 8);
@@ -60,7 +60,7 @@ class Guest extends React.Component {
       clicked,
       numOfGuests,
       adults,
-      children,
+      childrenGuests,
       infants,
       maxGuest,
       lowerBoundGuestNum,
@@ -136,7 +136,7 @@ class Guest extends React.Component {
           <GuestForm
             numOfGuests={numOfGuests}
             adults={adults}
-            children={children}
+            childrenGuests={childrenGuests}
             infants={infants}
             maxGuest={maxGuest}
             lowerBoundGuestNum={lowerBoundGuestNum}
