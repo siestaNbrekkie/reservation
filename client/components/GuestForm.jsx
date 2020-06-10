@@ -11,6 +11,7 @@ import {
 
 const GuestForm = (props) => {
   const {
+    numOfGuests,
     adults,
     childrenGuests,
     infants,
@@ -19,6 +20,12 @@ const GuestForm = (props) => {
     addGuests,
     subtractGuests,
   } = props;
+
+  const maxGuestsReached = {
+    pointerEvents: (numOfGuests === maxGuest ? 'none' : 'auto'),
+    borderColor: (numOfGuests === maxGuest ? '#EBEBEB' : '#222222'),
+    color: (numOfGuests === maxGuest ? '#EBEBEB' : '#222222'),
+  };
 
   return (
     <GuestDropdown>
@@ -29,13 +36,23 @@ const GuestForm = (props) => {
           </span>
         </TypeOfGuest>
         <GuestButtons>
-          <CircleButton id="adultsSubtract" onClick={subtractGuests}>-</CircleButton>
+          <CircleButton
+            style={{
+              pointerEvents: (adults === 1 ? 'none' : 'auto'),
+              borderColor: (adults === 1 ? '#EBEBEB' : '#222222'),
+              color: (adults === 1 ? '#EBEBEB' : '#222222'),
+            }}
+            id="adultsSubtract"
+            onClick={subtractGuests}
+          >
+            -
+          </CircleButton>
           <NumberSpan>
             {adults}
           </NumberSpan>
           <CircleButton
+            style={maxGuestsReached}
             id="adultsAdd"
-            style={{ borderColor: '#222222', color: '#222222' }}
             onClick={addGuests}
           >
             +
@@ -52,11 +69,27 @@ const GuestForm = (props) => {
           </span>
         </TypeOfGuest>
         <GuestButtons>
-          <CircleButton id="childrenGuestsSubtract" onClick={subtractGuests}>-</CircleButton>
+          <CircleButton
+            style={{
+              pointerEvents: (childrenGuests === 0 ? 'none' : 'auto'),
+              borderColor: (childrenGuests === 0 ? '#EBEBEB' : '#222222'),
+              color: (childrenGuests === 0 ? '#EBEBEB' : '#222222'),
+            }}
+            id="childrenGuestsSubtract"
+            onClick={subtractGuests}
+          >
+            -
+          </CircleButton>
           <NumberSpan>
             {childrenGuests}
           </NumberSpan>
-          <CircleButton id="childrenGuestsAdd" onClick={addGuests}>+</CircleButton>
+          <CircleButton
+            style={maxGuestsReached}
+            id="childrenGuestsAdd"
+            onClick={addGuests}
+          >
+            +
+          </CircleButton>
         </GuestButtons>
       </GuestChoices>
       <GuestChoices>
@@ -69,11 +102,31 @@ const GuestForm = (props) => {
           </span>
         </TypeOfGuest>
         <GuestButtons>
-          <CircleButton id="infantsSubtract" onClick={subtractGuests}>-</CircleButton>
+          <CircleButton
+            style={{
+              pointerEvents: (infants === 0 ? 'none' : 'auto'),
+              borderColor: (infants === 0 ? '#EBEBEB' : '#222222'),
+              color: (infants === 0 ? '#EBEBEB' : '#222222'),
+            }}
+            id="infantsSubtract"
+            onClick={subtractGuests}
+          >
+            -
+          </CircleButton>
           <NumberSpan>
             {infants}
           </NumberSpan>
-          <CircleButton id="infantsAdd" onClick={addGuests}>+</CircleButton>
+          <CircleButton
+            style={{
+              pointerEvents: (infants === 5 ? 'none' : 'auto'),
+              borderColor: (infants === 5 ? '#EBEBEB' : '#222222'),
+              color: (infants === 5 ? '#EBEBEB' : '#222222'),
+            }}
+            id="infantsAdd"
+            onClick={addGuests}
+          >
+            +
+          </CircleButton>
         </GuestButtons>
       </GuestChoices>
       <div style={{

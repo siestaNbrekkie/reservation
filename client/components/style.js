@@ -170,7 +170,7 @@ export const GuestButtons = styled.div`
   justify-content: space-between;
   width: 106px;
   margin-right: 18px;
-  color: #EBEBEB;
+  color: #222222;
 `;
 
 export const CircleButton = styled.div`
@@ -181,7 +181,7 @@ export const CircleButton = styled.div`
   font-size: 16px;
   text-align: center;
   line-height: 30px;
-  border: 1px solid #EBEBEB;
+  border: 1px solid #222222;
   border-radius: 50%;
   cursor: pointer;
 `;
