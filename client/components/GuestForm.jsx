@@ -9,7 +9,7 @@ import {
 } from './style';
 
 const GuestForm = (props) => {
-  const { maxGuest, onClick } = props;
+  const { numOfGuests, maxGuest, onClick, addGuests, subtractGuests } = props;
 
   return (
     <GuestDropdown>
@@ -20,11 +20,11 @@ const GuestForm = (props) => {
           </span>
         </TypeOfGuest>
         <GuestButtons>
-          <CircleButton>-</CircleButton>
+          <CircleButton onClick={subtractGuests}>-</CircleButton>
           <span style={{ textAlign: 'center', lineHeight: '30px' }}>
-            1
+            {numOfGuests}
           </span>
-          <CircleButton>+</CircleButton>
+          <CircleButton onClick={addGuests}>+</CircleButton>
         </GuestButtons>
       </GuestChoices>
       <GuestChoices>

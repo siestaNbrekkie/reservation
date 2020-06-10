@@ -15,6 +15,8 @@ class Guest extends React.Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.addGuests = this.addGuests.bind(this);
+    this.subtractGuests = this.subtractGuests.bind(this);
   }
 
   handleClick(event) {
@@ -27,6 +29,22 @@ class Guest extends React.Component {
       maxGuest,
       lowerBoundGuestNum,
       serviceFee,
+    });
+  }
+
+  addGuests() {
+    const { numOfGuests } = this.state;
+
+    this.setState({
+      numOfGuests: numOfGuests + 1,
+    });
+  }
+
+  subtractGuests() {
+    const { numOfGuests } = this.state;
+
+    this.setState({
+      numOfGuests: numOfGuests - 1,
     });
   }
 
@@ -67,7 +85,7 @@ class Guest extends React.Component {
           Guests
         </div>
         <GuestBox onClick={this.handleClick}>
-          <div>{numOfGuests} guest</div>
+          <div>{`${numOfGuests} ${guest}`}</div>
           <div style={{
             marginRight: '16px', fontSize: '16px', color: 'rgb(72,72,72)', fontWeight: '600',
           }}
@@ -85,10 +103,13 @@ class Guest extends React.Component {
         </GuestBox>
         {clicked ? (
           <GuestForm
+            numOfGuests={numOfGuests}
             maxGuest={maxGuest}
             lowerBoundGuestNum={lowerBoundGuestNum}
             serviceFee={serviceFee}
             onClick={this.handleClick}
+            addGuests={this.addGuests}
+            subtractGuests={this.subtractGuests}
           />
         ) : <div />}
       </GuestDiv>
