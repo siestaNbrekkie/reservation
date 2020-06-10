@@ -73,7 +73,7 @@ class App extends React.Component {
           </div>
         </DetailsDiv>
         <Date />
-        <Guest />
+        <Guest maxGuest={listingInfo.maxGuest} lowerBoundGuestNum={listingInfo.lowerBoundGuestNum} serviceFee={listingInfo.serviceFee} />
         <ReserveButton handleSubmit={this.handleSubmit} />
       </ResverationsDiv>
     );
