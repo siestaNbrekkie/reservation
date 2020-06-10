@@ -83,7 +83,14 @@ class Guest extends React.Component {
             </div>
           </div>
         </GuestBox>
-        {clicked ? <GuestForm maxGuest={maxGuest} lowerBoundGuestNum={lowerBoundGuestNum} serviceFee={serviceFee} /> : <div />}
+        {clicked ? (
+          <GuestForm
+            maxGuest={maxGuest}
+            lowerBoundGuestNum={lowerBoundGuestNum}
+            serviceFee={serviceFee}
+            onClick={this.handleClick}
+          />
+        ) : <div />}
       </GuestDiv>
     );
   }
