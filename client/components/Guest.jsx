@@ -18,8 +18,8 @@ class Guest extends React.Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
-    this.addAdults = this.addAdults.bind(this);
-    this.subtractAdults = this.subtractAdults.bind(this);
+    this.addGuests = this.addGuests.bind(this);
+    this.subtractGuests = this.subtractGuests.bind(this);
     this.addChildren = this.addChildren.bind(this);
     this.subtractChildren = this.subtractChildren.bind(this);
     this.addInfants = this.addInfants.bind(this);
@@ -39,22 +39,27 @@ class Guest extends React.Component {
     });
   }
 
-  addAdults() {
-    const { numOfGuests, adults } = this.state;
+  addGuests(event) {
+    // for adding adults and children
+    const { numOfGuests } = this.state;
+    let value = event.target.id;
+    value = value.slice(0, value.length - 3);
 
-    this.setState({
-      adults: adults + 1,
+    this.setState((prevState) => ({
+      [value]: prevState[value] + 1,
       numOfGuests: numOfGuests + 1,
-    });
+    }));
   }
 
-  subtractAdults() {
-    const { numOfGuests, adults } = this.state;
+  subtractGuests(event) {
+    const { numOfGuests } = this.state;
+    let value = event.target.id;
+    value = value.slice(0, value.length - 8);
 
-    this.setState({
-      adults: adults - 1,
+    this.setState((prevState) => ({
+      [value]: prevState[value] - 1,
       numOfGuests: numOfGuests - 1,
-    });
+    }));
   }
 
   addChildren() {
@@ -178,8 +183,8 @@ class Guest extends React.Component {
             lowerBoundGuestNum={lowerBoundGuestNum}
             serviceFee={serviceFee}
             onClick={this.handleClick}
-            addAdults={this.addAdults}
-            subtractAdults={this.subtractAdults}
+            addGuests={this.addGuests}
+            subtractGuests={this.subtractGuests}
             addChildren={this.addChildren}
             subtractChildren={this.subtractChildren}
             addInfants={this.addInfants}

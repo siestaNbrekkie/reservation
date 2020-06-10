@@ -5,6 +5,7 @@ import {
   TypeOfGuest,
   GuestButtons,
   CircleButton,
+  NumberSpan,
   CloseButton,
 } from './style';
 
@@ -15,8 +16,8 @@ const GuestForm = (props) => {
     infants,
     maxGuest,
     onClick,
-    addAdults,
-    subtractAdults,
+    addGuests,
+    subtractGuests,
     addChildren,
     subtractChildren,
     addInfants,
@@ -32,11 +33,17 @@ const GuestForm = (props) => {
           </span>
         </TypeOfGuest>
         <GuestButtons>
-          <CircleButton onClick={subtractAdults}>-</CircleButton>
-          <span style={{ textAlign: 'center', lineHeight: '30px' }}>
+          <CircleButton id="adultsSubtract" onClick={subtractGuests}>-</CircleButton>
+          <NumberSpan>
             {adults}
-          </span>
-          <CircleButton onClick={addAdults}>+</CircleButton>
+          </NumberSpan>
+          <CircleButton
+            id="adultsAdd"
+            style={{ borderColor: '#222222', color: '#222222' }}
+            onClick={addGuests}
+          >
+            +
+          </CircleButton>
         </GuestButtons>
       </GuestChoices>
       <GuestChoices>
@@ -50,9 +57,9 @@ const GuestForm = (props) => {
         </TypeOfGuest>
         <GuestButtons>
           <CircleButton onClick={subtractChildren}>-</CircleButton>
-          <span style={{ textAlign: 'center', lineHeight: '30px' }}>
+          <NumberSpan>
             {children}
-          </span>
+          </NumberSpan>
           <CircleButton onClick={addChildren}>+</CircleButton>
         </GuestButtons>
       </GuestChoices>
@@ -67,9 +74,9 @@ const GuestForm = (props) => {
         </TypeOfGuest>
         <GuestButtons>
           <CircleButton onClick={subtractInfants}>-</CircleButton>
-          <span style={{ textAlign: 'center', lineHeight: '30px' }}>
+          <NumberSpan>
             {infants}
-          </span>
+          </NumberSpan>
           <CircleButton onClick={addInfants}>+</CircleButton>
         </GuestButtons>
       </GuestChoices>
