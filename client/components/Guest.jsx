@@ -20,10 +20,6 @@ class Guest extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.addGuests = this.addGuests.bind(this);
     this.subtractGuests = this.subtractGuests.bind(this);
-    this.addChildren = this.addChildren.bind(this);
-    this.subtractChildren = this.subtractChildren.bind(this);
-    this.addInfants = this.addInfants.bind(this);
-    this.subtractInfants = this.subtractInfants.bind(this);
   }
 
   handleClick(event) {
@@ -40,60 +36,23 @@ class Guest extends React.Component {
   }
 
   addGuests(event) {
-    // for adding adults and children
-    const { numOfGuests } = this.state;
     let value = event.target.id;
     value = value.slice(0, value.length - 3);
 
     this.setState((prevState) => ({
       [value]: prevState[value] + 1,
-      numOfGuests: numOfGuests + 1,
+      numOfGuests: (value === 'infants' ? prevState.numOfGuests : prevState.numOfGuests + 1),
     }));
   }
 
   subtractGuests(event) {
-    const { numOfGuests } = this.state;
     let value = event.target.id;
     value = value.slice(0, value.length - 8);
 
     this.setState((prevState) => ({
       [value]: prevState[value] - 1,
-      numOfGuests: numOfGuests - 1,
+      numOfGuests: (value === 'infants' ? prevState.numOfGuests : prevState.numOfGuests - 1),
     }));
-  }
-
-  addChildren() {
-    const { numOfGuests, children } = this.state;
-
-    this.setState({
-      children: children + 1,
-      numOfGuests: numOfGuests + 1,
-    });
-  }
-
-  subtractChildren() {
-    const { numOfGuests, children } = this.state;
-
-    this.setState({
-      children: children - 1,
-      numOfGuests: numOfGuests - 1,
-    });
-  }
-
-  addInfants() {
-    const { infants } = this.state;
-
-    this.setState({
-      infants: infants + 1,
-    });
-  }
-
-  subtractInfants() {
-    const { infants } = this.state;
-
-    this.setState({
-      infants: infants - 1,
-    });
   }
 
   render() {
@@ -185,10 +144,6 @@ class Guest extends React.Component {
             onClick={this.handleClick}
             addGuests={this.addGuests}
             subtractGuests={this.subtractGuests}
-            addChildren={this.addChildren}
-            subtractChildren={this.subtractChildren}
-            addInfants={this.addInfants}
-            subtractInfants={this.subtractInfants}
           />
         ) : <div />}
       </GuestDiv>

@@ -18,10 +18,6 @@ const GuestForm = (props) => {
     onClick,
     addGuests,
     subtractGuests,
-    addChildren,
-    subtractChildren,
-    addInfants,
-    subtractInfants,
   } = props;
 
   return (
@@ -56,11 +52,11 @@ const GuestForm = (props) => {
           </span>
         </TypeOfGuest>
         <GuestButtons>
-          <CircleButton onClick={subtractChildren}>-</CircleButton>
+          <CircleButton id="childrenSubtract" onClick={subtractGuests}>-</CircleButton>
           <NumberSpan>
             {children}
           </NumberSpan>
-          <CircleButton onClick={addChildren}>+</CircleButton>
+          <CircleButton id="childrenAdd" onClick={addGuests}>+</CircleButton>
         </GuestButtons>
       </GuestChoices>
       <GuestChoices>
@@ -73,11 +69,11 @@ const GuestForm = (props) => {
           </span>
         </TypeOfGuest>
         <GuestButtons>
-          <CircleButton onClick={subtractInfants}>-</CircleButton>
+          <CircleButton id="infantsSubtract" onClick={subtractGuests}>-</CircleButton>
           <NumberSpan>
             {infants}
           </NumberSpan>
-          <CircleButton onClick={addInfants}>+</CircleButton>
+          <CircleButton id="infantsAdd" onClick={addGuests}>+</CircleButton>
         </GuestButtons>
       </GuestChoices>
       <div style={{
