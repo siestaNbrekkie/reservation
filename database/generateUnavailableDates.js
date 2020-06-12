@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const writeUsers = fs.createWriteStream(path.resolve(__dirname, './unavailableDates.csv'));
-writeUsers.write('listingId,day,month,year\n', 'utf8');
+writeUsers.write('id,listingId,day,month,year\n', 'utf8');
 
 const writeTenThousandUnavailableDates = (writer, encoding, callback) => {
   let i = 10000;
@@ -40,7 +40,8 @@ const writeTenThousandUnavailableDates = (writer, encoding, callback) => {
 
         IsUniqueThenAddDate(date);
 
-        const data = `${listingId},${day},${month},${year}\n`;
+        const data = `${id},${listingId},${day},${month},${year}\n`;
+        id += 1;
 
         if (i === 0) {
           writer.write(data, encoding, callback);
