@@ -15,52 +15,44 @@ const writeTenThousandUnavailableDates = (writer, encoding, callback) => {
       }
       id += 1;
 
-      // console.log(`=========================================WHAT'S I:${i}=========================================`)
-      // console.log(`=====================HERE'S ID:${id}========================`)
       if (id % 10 === 0) { // 100
-        // console.log('apparently id divisible by TEN', id);
         console.log(id);
       }
       const listingId = id;
 
       const dates = new Set([]);
+      let initialSetSize = dates.size;
+      // console.log("INITIALSETSIZE======", initialSetSize)
 
-      for (let j = 1; j <= 10; j += 1) { // 100
-        // console.log(`----------------LET'S PRINT OUT J:${j}----------------`)
-        let day = Math.floor(Math.random() * (8 - 1) + 1);
-        let month = Math.floor(Math.random() * (13 - 1) + 1);
-        let year = new Date().getFullYear();
+      while (dates.size < 10) { // 100
+        const day = Math.floor(Math.random() * (8 - 1) + 1);
+        const month = Math.floor(Math.random() * (13 - 1) + 1);
+        const year = new Date().getFullYear();
         const date = `${day}/${month}/${year}`;
 
-        const IsUniqueThenAddDate = (dateStr) => {
-          // console.log('DATESTRING:', dateStr)
-          if (!dates.has(dateStr)) {
-            // console.log('DATESTRING UNIQUE:', dateStr)
-            dates.add(dateStr);
+        dates.add(date);
+
+        const differenceInSet = dates.size - initialSetSize;
+        // console.log('+++DIFF IN SET++++', differenceInSet);
+        // console.log('LISTINGID:', id);
+
+        if (differenceInSet) {
+          initialSetSize += 1;
+          const data = `${1000 - i},${listingId},${day},${month},${year}\n`;
+          i -= 1;
+
+          if (i === 0) {
+            writer.write(data, encoding, callback);
           } else {
-            // console.log('NOT UNIQUE, PRODUCE NEW DATESTRING')
-            day = Math.floor(Math.random() * (8 - 1) + 1);
-            month = Math.floor(Math.random() * (13 - 1) + 1);
-            year = new Date().getFullYear();
-            const newDate = `${day}/${month}/${year}`;
-            IsUniqueThenAddDate(newDate);
+            ok = writer.write(data, encoding);
           }
-        };
 
-        IsUniqueThenAddDate(date);
-
-        // console.log('+++++++++++++++++++++++++++++++WELL HEY OUTSIDE INNER FUNC+++++++++++++++++++++++++++++++')
-
-        const data = `${1000 - i},${listingId},${day},${month},${year}\n`;
-        i -= 1;
-        // console.log('HERE IS THE NEXT ID:', id)
-
-        if (i === 0) {
-          writer.write(data, encoding, callback);
-        } else {
-          ok = writer.write(data, encoding);
+          // if (dates.size % 100) {
+          //   console.log('SIZE OF DATES', dates.size);
+          // }
         }
       }
+      // console.log('SET SIZE MUST BE 10 NOW', dates.size);
     } while (i > 0 && ok);
     if (i > 0) {
       writer.once('drain', write);
