@@ -84,9 +84,16 @@ class Calendar extends React.Component {
       },
     })
       .then((response) => {
-        console.log(response);
+        const datesData = response.data;
+        const modifiedDates = {};
+
+        for (let i = 0; i < datesData.length; i += 1) {
+          modifiedDates[`${datesData[i].day}/${datesData[i].month}/${datesData[i].year}`] = false;
+        }
+
+        console.log(modifiedDates);
         this.setState({
-          dates: response.data,
+          dates: modifiedDates,
         });
       })
       .catch((error) => {
@@ -355,7 +362,7 @@ class Calendar extends React.Component {
           <Days>Sa</Days>
         </Rows>
         <Rows>
-          {row1.map((day) => <Dates>{day}</Dates>)}
+          {row1.map((day) => <Dates available={dates[`${day}/${currentMonth}/${currentYear}`]}>{day}</Dates>)}
         </Rows>
         <Rows>
           {row2.map((day) => <Dates>{day}</Dates>)}
