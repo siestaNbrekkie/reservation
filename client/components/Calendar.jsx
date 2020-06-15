@@ -335,11 +335,18 @@ class Calendar extends React.Component {
     return (
       <CalendarBox>
         <TopHeader>
-          <ArrowBox onClick={this.handleLeftClick}>
+          <ArrowBox
+            style={{
+              pointerEvents: (currentMonth <= new Date().getMonth() + 1 && currentYear <= new Date().getFullYear() ? 'none' : 'auto'),
+              borderColor: (currentMonth <= new Date().getMonth() + 1 && currentYear <= new Date().getFullYear() ? '#EBEBEB' : 'rgb(228, 231, 231)'),
+              color: (currentMonth <= new Date().getMonth() + 1 && currentYear <= new Date().getFullYear() ? '#EBEBEB' : 'rgb(228, 231, 231)'),
+            }}
+            onClick={this.handleLeftClick}
+          >
             <svg width="19" height="19" viewBox="0 0 1000 1000">
               <path
                 d="M 336 275 L 126 485 h 806 c 13 0 23 10 23 23 s -10 23 -23 23 H 126 l 210 210 c 11 11 11 21 0 32 c -5 5 -10 7 -16 7 s -11 -2 -16 -7 L 55 524 c -11 -11 -11 -21 0 -32 l 249 -249 c 21 -22 53 10 32 32 Z"
-                fill="#484848"
+                fill={currentMonth <= new Date().getMonth() + 1 && currentYear <= new Date().getFullYear() ? '#EBEBEB' : '#484848'}
               />
             </svg>
           </ArrowBox>
