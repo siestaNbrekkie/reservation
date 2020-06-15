@@ -42,7 +42,7 @@ const Dates = styled.div`
 `;
 
 
-class Calendar extends React.Component {
+class CheckInCalendar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -432,4 +432,4 @@ class Calendar extends React.Component {
   }
 }
 
-export default Calendar;
+export default CheckInCalendar;
