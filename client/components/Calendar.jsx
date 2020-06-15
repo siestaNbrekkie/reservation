@@ -32,7 +32,7 @@ const Dates = styled.div`
     border: none;
     `}
 
-  ${(props) => (props.available)
+  ${(props) => (typeof props.day === 'number' && props.available === undefined)
     && css`
     :hover {
       background-color: rgb(228, 231, 231);
