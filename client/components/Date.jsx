@@ -1,5 +1,5 @@
 import React from 'react';
-import Calendar from './Calendar';
+import CheckInCalendar from './CheckInCalendar';
 import { DateDiv, DateBox, CheckInOut } from './style';
 
 class Date extends React.Component {
@@ -104,7 +104,7 @@ class Date extends React.Component {
             Checkout
           </CheckInOut>
         </DateBox>
-        {checkIn ? <Calendar /> : <div />}
+        {checkIn ? <CheckInCalendar /> : <div />}
       </DateDiv>
     );
   }
