@@ -51,7 +51,7 @@ class Calendar extends React.Component {
       rightArrow: false,
       currentDay: new Date().getDay(),
       currentDate: new Date().getDate(),
-      currentMonth: new Date().getMonth(),
+      currentMonth: new Date().getMonth() + 1,
       currentYear: new Date().getFullYear(),
       daysInMonth: 0,
       startDay: 0,
@@ -66,10 +66,10 @@ class Calendar extends React.Component {
   }
 
   componentDidMount() {
-    const { currentDay, currentDate } = this.state;
+    const { currentDay, currentDate, currentMonth } = this.state;
     const numDaysInMonth = this.obtainDaysInMonth();
 
-    this.getDates();
+    this.getDates(currentMonth);
 
     this.setState({
       startDay: (((currentDay - (currentDate - 1)) % 7) + 7) % 7,
@@ -77,9 +77,14 @@ class Calendar extends React.Component {
     });
   }
 
-  getDates() {
-    axios.get(`http://localhost:3002/api${window.location.pathname}dates`)
+  getDates(month) {
+    axios.get(`http://localhost:3002/api${window.location.pathname}unavailable_dates`, {
+      params: {
+        month,
+      },
+    })
       .then((response) => {
+        console.log(response);
         this.setState({
           dates: response.data,
         });
@@ -105,15 +110,15 @@ class Calendar extends React.Component {
       isLeapYear = true;
     }
 
-    if (currentMonth === 1) {
+    if (currentMonth === 2) {
       if (isLeapYear) {
         numDaysInMonth = 29;
       } else {
         numDaysInMonth = 28;
       }
-    } else if (currentMonth < 7 && currentMonth % 2 === 0) {
+    } else if (currentMonth < 8 && currentMonth % 2 === 1) {
       numDaysInMonth = 31;
-    } else if (currentMonth > 6 && currentMonth % 2 === 1) {
+    } else if (currentMonth > 7 && currentMonth % 2 === 0) {
       numDaysInMonth = 31;
     } else {
       numDaysInMonth = 30;
@@ -125,7 +130,7 @@ class Calendar extends React.Component {
   obtainDaysInPrevMonth() {
     const { currentMonth, currentYear } = this.state;
 
-    const prevMonth = (((currentMonth - 1) % 12) + 12) % 12;
+    const prevMonth = (currentMonth - 1) ? (currentMonth - 1) : 12;
     let isLeapYear;
     let numDaysInPrevMonth;
 
@@ -139,15 +144,15 @@ class Calendar extends React.Component {
       isLeapYear = true;
     }
 
-    if (prevMonth === 1) {
+    if (prevMonth === 2) {
       if (isLeapYear) {
         numDaysInPrevMonth = 29;
       } else {
         numDaysInPrevMonth = 28;
       }
-    } else if (prevMonth < 7 && prevMonth % 2 === 0) {
+    } else if (prevMonth < 8 && prevMonth % 2 === 1) {
       numDaysInPrevMonth = 31;
-    } else if (prevMonth > 6 && prevMonth % 2 === 1) {
+    } else if (prevMonth > 7 && prevMonth % 2 === 0) {
       numDaysInPrevMonth = 31;
     } else {
       numDaysInPrevMonth = 30;
@@ -159,7 +164,7 @@ class Calendar extends React.Component {
   obtainDaysInNextMonth() {
     const { currentMonth, currentYear } = this.state;
 
-    const nextMonth = (((currentMonth + 1) % 12) + 12) % 12;
+    const nextMonth = (currentMonth + 1) === 13 ? 1 : (currentMonth + 1);
     let isLeapYear;
     let numDaysInNextMonth;
 
@@ -173,15 +178,15 @@ class Calendar extends React.Component {
       isLeapYear = true;
     }
 
-    if (nextMonth === 1) {
+    if (nextMonth === 2) {
       if (isLeapYear) {
         numDaysInNextMonth = 29;
       } else {
         numDaysInNextMonth = 28;
       }
-    } else if (nextMonth < 7 && nextMonth % 2 === 0) {
+    } else if (nextMonth < 8 && nextMonth % 2 === 1) {
       numDaysInNextMonth = 31;
-    } else if (nextMonth > 6 && nextMonth % 2 === 1) {
+    } else if (nextMonth > 7 && nextMonth % 2 === 0) {
       numDaysInNextMonth = 31;
     } else {
       numDaysInNextMonth = 30;
@@ -201,7 +206,7 @@ class Calendar extends React.Component {
 
     const daysInPrevMonth = this.obtainDaysInPrevMonth();
 
-    if (currentMonth === 0) {
+    if (currentMonth === 1) {
       this.setState({
         currentYear: currentYear - 1,
       });
@@ -210,7 +215,7 @@ class Calendar extends React.Component {
     this.setState({
       leftArrow: true,
       rightArrow: false,
-      currentMonth: (((currentMonth - 1) % 12) + 12) % 12,
+      currentMonth: (currentMonth - 1) ? (currentMonth - 1) : 12,
       startDay: (((startDay - daysInPrevMonth) % 7) + 7) % 7,
       daysInMonth: daysInPrevMonth,
     });
@@ -226,7 +231,7 @@ class Calendar extends React.Component {
       daysInMonth,
     } = this.state;
 
-    if (currentMonth === 11) {
+    if (currentMonth === 12) {
       this.setState({
         currentYear: currentYear + 1,
       });
@@ -237,7 +242,7 @@ class Calendar extends React.Component {
     this.setState({
       rightArrow: true,
       leftArrow: false,
-      currentMonth: (currentMonth + 1) % 12,
+      currentMonth: (currentMonth + 1) === 13 ? 1 : (currentMonth + 1),
       startDay: (((startDay + daysInMonth) % 7) + 7) % 7,
       daysInMonth: numDaysInNextMonth,
     });
@@ -257,18 +262,18 @@ class Calendar extends React.Component {
     }
 
     const Months = {
-      0: 'January',
-      1: 'February',
-      2: 'March',
-      3: 'April',
-      4: 'May',
-      5: 'June',
-      6: 'July',
-      7: 'August',
-      8: 'September',
-      9: 'October',
-      10: 'November',
-      11: 'December',
+      1: 'January',
+      2: 'February',
+      3: 'March',
+      4: 'April',
+      5: 'May',
+      6: 'June',
+      7: 'July',
+      8: 'August',
+      9: 'September',
+      10: 'October',
+      11: 'November',
+      12: 'December',
     };
 
     const row1 = [];
@@ -326,6 +331,7 @@ class Calendar extends React.Component {
             </svg>
           </ArrowBox>
           <MonthAndYear>
+            {console.log('CURRENTMONTH:', currentMonth)}
             {Months[currentMonth]}
             {' '}
             {currentYear}
@@ -349,22 +355,22 @@ class Calendar extends React.Component {
           <Days>Sa</Days>
         </Rows>
         <Rows>
-          {row1.map((day) => <Dates available={dates[`${Months[currentMonth].toLowerCase()}${day}`]}>{day}</Dates>)}
+          {row1.map((day) => <Dates>{day}</Dates>)}
         </Rows>
         <Rows>
-          {row2.map((day) => <Dates available={dates[`${Months[currentMonth].toLowerCase()}${day}`]}>{day}</Dates>)}
+          {row2.map((day) => <Dates>{day}</Dates>)}
         </Rows>
         <Rows>
-          {row3.map((day) => <Dates available={dates[`${Months[currentMonth].toLowerCase()}${day}`]}>{day}</Dates>)}
+          {row3.map((day) => <Dates>{day}</Dates>)}
         </Rows>
         <Rows>
-          {row4.map((day) => <Dates available={dates[`${Months[currentMonth].toLowerCase()}${day}`]}>{day}</Dates>)}
+          {row4.map((day) => <Dates>{day}</Dates>)}
         </Rows>
         <Rows>
-          {row5.map((day) => <Dates available={dates[`${Months[currentMonth].toLowerCase()}${day}`]}>{day}</Dates>)}
+          {row5.map((day) => <Dates>{day}</Dates>)}
         </Rows>
         <Rows>
-          {row6.map((day) => <Dates available={dates[`${Months[currentMonth].toLowerCase()}${day}`]}>{day}</Dates>)}
+          {row6.map((day) => <Dates>{day}</Dates>)}
         </Rows>
       </CalendarBox>
     );
