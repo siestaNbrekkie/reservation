@@ -58,6 +58,7 @@ class Calendar extends React.Component {
       dates: {},
     };
 
+    this.getDates = this.getDates.bind(this);
     this.handleLeftClick = this.handleLeftClick.bind(this);
     this.handleRightClick = this.handleRightClick.bind(this);
     this.obtainDaysInMonth = this.obtainDaysInMonth.bind(this);
@@ -91,6 +92,8 @@ class Calendar extends React.Component {
           modifiedDates[`${datesData[i].day}/${datesData[i].month}/${datesData[i].year}`] = false;
         }
 
+        console.log('get dates!!!')
+        console.log('MODIFIED dates ====', modifiedDates)
         this.setState({
           dates: modifiedDates,
         });
@@ -225,6 +228,9 @@ class Calendar extends React.Component {
       startDay: (((startDay - daysInPrevMonth) % 7) + 7) % 7,
       daysInMonth: daysInPrevMonth,
     });
+
+    const currentDateBeforeAsyncSetState = (currentMonth - 1 === 0) ? 12 : currentMonth - 1;
+    this.getDates(currentDateBeforeAsyncSetState);
   }
 
   handleRightClick(event) {
@@ -252,6 +258,9 @@ class Calendar extends React.Component {
       startDay: (((startDay + daysInMonth) % 7) + 7) % 7,
       daysInMonth: numDaysInNextMonth,
     });
+
+    const currentDateBeforeAsyncSetState = (currentMonth + 1 === 13) ? 1 : currentMonth + 1;
+    this.getDates(currentDateBeforeAsyncSetState);
   }
 
   render() {
