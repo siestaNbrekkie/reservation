@@ -368,22 +368,64 @@ class Calendar extends React.Component {
           <Days>Sa</Days>
         </Rows>
         <Rows>
-          {row1.map((day) => <Dates day={day} available={dates[`${day}/${currentMonth}/${currentYear}`]}>{day}</Dates>)}
+          {row1.map((day) => (
+            <Dates
+              day={day}
+              available={dates[`${day}/${currentMonth}/${currentYear}`]}
+            >
+              {day}
+            </Dates>
+          ))}
         </Rows>
         <Rows>
-          {row2.map((day) => <Dates day={day} available={dates[`${day}/${currentMonth}/${currentYear}`]}>{day}</Dates>)}
+          {row2.map((day) => (
+            <Dates
+              day={day}
+              available={dates[`${day}/${currentMonth}/${currentYear}`]}
+            >
+              {day}
+            </Dates>
+          ))}
         </Rows>
         <Rows>
-          {row3.map((day) => <Dates day={day} available={dates[`${day}/${currentMonth}/${currentYear}`]}>{day}</Dates>)}
+          {row3.map((day) => (
+            <Dates
+              day={day}
+              available={dates[`${day}/${currentMonth}/${currentYear}`]}
+            >
+              {day}
+            </Dates>
+          ))}
         </Rows>
         <Rows>
-          {row4.map((day) => <Dates day={day} available={dates[`${day}/${currentMonth}/${currentYear}`]}>{day}</Dates>)}
+          {row4.map((day) => (
+            <Dates
+              day={day}
+              available={dates[`${day}/${currentMonth}/${currentYear}`]}
+            >
+              {day}
+            </Dates>
+          ))}
         </Rows>
         <Rows>
-          {row5.map((day) => <Dates day={day} available={dates[`${day}/${currentMonth}/${currentYear}`]}>{day}</Dates>)}
+          {row5.map((day) => (
+            <Dates
+              day={day}
+              available={dates[`${day}/${currentMonth}/${currentYear}`]}
+            >
+              {day}
+            </Dates>
+          ))}
         </Rows>
         <Rows>
-          {row6.map((day) => <Dates day={day} available={dates[`${day}/${currentMonth}/${currentYear}`]}>{day}</Dates>)}
+          {row6.map((day) => (
+            <Dates
+              day={day}
+              available={dates[`${day}/${currentMonth}/${currentYear}`]}
+            >
+              {day}
+            </Dates>
+          ))}
         </Rows>
       </CalendarBox>
     );
