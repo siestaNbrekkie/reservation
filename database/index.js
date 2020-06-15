@@ -77,9 +77,10 @@ const UnavailableDates = sequelize.define('unavailable_dates', {
   indexes: [
     {
       unique: true,
-      fields: ['day', 'month', 'year'],
+      fields: ['day', 'month', 'year', 'listingId'],
     },
   ],
+  timestamps: false,
 });
 
 // Associations
