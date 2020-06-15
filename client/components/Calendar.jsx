@@ -47,8 +47,6 @@ class Calendar extends React.Component {
     super(props);
 
     this.state = {
-      leftArrow: false,
-      rightArrow: false,
       currentDay: new Date().getDay(),
       currentDate: new Date().getDate(),
       currentMonth: new Date().getMonth() + 1,
@@ -220,8 +218,6 @@ class Calendar extends React.Component {
     }
 
     this.setState({
-      leftArrow: true,
-      rightArrow: false,
       currentMonth: (currentMonth - 1) ? (currentMonth - 1) : 12,
       startDay: (((startDay - daysInPrevMonth) % 7) + 7) % 7,
       daysInMonth: daysInPrevMonth,
@@ -250,8 +246,6 @@ class Calendar extends React.Component {
     const numDaysInNextMonth = this.obtainDaysInNextMonth();
 
     this.setState({
-      rightArrow: true,
-      leftArrow: false,
       currentMonth: (currentMonth + 1) === 13 ? 1 : (currentMonth + 1),
       startDay: (((startDay + daysInMonth) % 7) + 7) % 7,
       daysInMonth: numDaysInNextMonth,
