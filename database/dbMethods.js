@@ -13,10 +13,11 @@ module.exports = {
       });
   },
 
-  getDates: (req, res) => {
+  getUnavailableDates: (req, res) => {
     const { id } = req.params;
+    const { month } = req.query;
 
-    db.Calendar.findOne({ where: { id } })
+    db.UnavailableDates.findAll({ where: { listingId: id, month } })
       .then((data) => {
         res.status(200).send(data);
       })
