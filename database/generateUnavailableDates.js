@@ -24,7 +24,7 @@ const writeEightThousandUnavailableDates = (writer, encoding, callback) => {
       let initialSetSize = dates.size;
 
       while (dates.size < 80) { // 100
-        const day = Math.floor(Math.random() * (8 - 1) + 1);
+        const day = Math.floor(Math.random() * (29 - 1) + 1);
         const month = Math.floor(Math.random() * (13 - 1) + 1);
         const year = new Date().getFullYear();
         const date = `${day}/${month}/${year}`;
