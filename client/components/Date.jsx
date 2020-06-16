@@ -12,6 +12,7 @@ class Date extends React.Component {
       checkOut: false,
       hover: false,
       hoverCheckout: false,
+      dateClicked: {},
     };
 
     this.handleDateClick = this.handleDateClick.bind(this);
@@ -55,10 +56,12 @@ class Date extends React.Component {
     });
   }
 
-  handleDateClick() {
+  handleDateClick(date) {
+    console.log('clicked date', date);
     this.setState({
       checkIn: false,
       checkOut: true,
+      dateClicked: date,
     });
   }
 
@@ -113,7 +116,13 @@ class Date extends React.Component {
             Checkout
           </CheckInOut>
         </DateBox>
-        {checkIn ? <CheckInCalendar checkIn={checkIn} checkOut={checkOut} clickDate={this.handleDateClick} /> : <div />}
+        {checkIn ? (
+          <CheckInCalendar
+            checkIn={checkIn}
+            checkOut={checkOut}
+            clickDate={this.handleDateClick}
+          />
+        ) : <div />}
       </DateDiv>
     );
   }

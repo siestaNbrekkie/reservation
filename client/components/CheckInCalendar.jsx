@@ -47,8 +47,6 @@ class CheckInCalendar extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(props);
-
     this.state = {
       currentDay: new Date().getDay(),
       currentDate: new Date().getDate(),
@@ -377,7 +375,11 @@ class CheckInCalendar extends React.Component {
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
-              onClick={clickDate}
+              onClick={() => (clickDate({
+                day,
+                month: currentMonth,
+                year: currentYear,
+              }))}
             >
               {day}
             </Dates>
