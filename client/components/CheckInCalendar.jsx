@@ -390,6 +390,11 @@ class CheckInCalendar extends React.Component {
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
+              onClick={() => (clickDate({
+                day,
+                month: currentMonth,
+                year: currentYear,
+              }))}
             >
               {day}
             </Dates>
@@ -400,6 +405,11 @@ class CheckInCalendar extends React.Component {
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
+              onClick={() => (clickDate({
+                day,
+                month: currentMonth,
+                year: currentYear,
+              }))}
             >
               {day}
             </Dates>
@@ -410,6 +420,11 @@ class CheckInCalendar extends React.Component {
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
+              onClick={() => (clickDate({
+                day,
+                month: currentMonth,
+                year: currentYear,
+              }))}
             >
               {day}
             </Dates>
@@ -420,6 +435,11 @@ class CheckInCalendar extends React.Component {
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
+              onClick={() => (clickDate({
+                day,
+                month: currentMonth,
+                year: currentYear,
+              }))}
             >
               {day}
             </Dates>
@@ -430,6 +450,11 @@ class CheckInCalendar extends React.Component {
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
+              onClick={() => (clickDate({
+                day,
+                month: currentMonth,
+                year: currentYear,
+              }))}
             >
               {day}
             </Dates>
