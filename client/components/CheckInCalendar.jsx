@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import styled, { css } from 'styled-components';
 import {
@@ -45,6 +46,8 @@ const Dates = styled.div`
 class CheckInCalendar extends React.Component {
   constructor(props) {
     super(props);
+
+    console.log(props);
 
     this.state = {
       currentDay: new Date().getDay(),
@@ -264,6 +267,8 @@ class CheckInCalendar extends React.Component {
       dates,
     } = this.state;
 
+    const { clickDate } = this.props;
+
     if (!Object.keys(dates).length) {
       return <div> </div>;
     }
@@ -372,6 +377,7 @@ class CheckInCalendar extends React.Component {
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
+              onClick={clickDate}
             >
               {day}
             </Dates>
@@ -431,5 +437,13 @@ class CheckInCalendar extends React.Component {
     );
   }
 }
+
+CheckInCalendar.defaultProps = {
+  clickDate: () => {},
+};
+
+CheckInCalendar.propTypes = {
+  clickDate: PropTypes.func,
+};
 
 export default CheckInCalendar;
