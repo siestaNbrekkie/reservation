@@ -57,7 +57,7 @@ class Date extends React.Component {
   }
 
   handleDateClick(date) {
-    console.log('clicked date', date);
+    // console.log('clicked date', date);
     this.setState({
       checkIn: false,
       checkOut: true,
@@ -84,10 +84,8 @@ class Date extends React.Component {
     if (Object.keys(dateClicked).length && checkOut) {
       defaultBackgroundCheckout = '#B1ECED';
     } else if (!hoverCheckout) {
-      console.log("NOT HOVERCHECKOUT")
       defaultBackgroundCheckout = 'transparent';
     } else if (hoverCheckout || checkOut) {
-      console.log('HOEVERCHECKOUT || CHECKOUT')
       defaultBackgroundCheckout = '#B1ECED';
     } 
 
@@ -96,8 +94,6 @@ class Date extends React.Component {
         checkInDate={dateClicked}
       />
     ) : <div />;
-
-    console.log('checkIN:', checkIn, 'checkOUT:', checkOut);
 
     return (
       <DateDiv>

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import styled, { css } from 'styled-components';
 import {
@@ -39,10 +40,16 @@ const Dates = styled.div`
     };
     cursor: pointer;
     `}
+
+    ${(props) => (props.checkInDate)
+    && css`
+    background-color: #008489;
+    color: white;
+    `}
 `;
 
 
-class Calendar extends React.Component {
+class CheckOutCalendar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -264,6 +271,8 @@ class Calendar extends React.Component {
       dates,
     } = this.state;
 
+    const { checkInDate } = this.props;
+
     if (!Object.keys(dates).length) {
       return <div> </div>;
     }
@@ -369,12 +378,18 @@ class Calendar extends React.Component {
         </Rows>
         <Rows>
           {row1.map((day) => (
-            <Dates
-              day={day}
-              available={dates[`${day}/${currentMonth}/${currentYear}`]}
-            >
-              {day}
-            </Dates>
+            (
+              <Dates
+                day={day}
+                available={dates[`${day}/${currentMonth}/${currentYear}`]}
+                checkInDate={checkInDate.day === day
+                  && checkInDate.month === currentMonth
+                  && checkInDate.year === currentYear}
+              >
+                {day}
+              </Dates>
+
+            )
           ))}
         </Rows>
         <Rows>
@@ -432,4 +447,16 @@ class Calendar extends React.Component {
   }
 }
 
-export default Calendar;
+CheckOutCalendar.defaultProps = {
+  checkInDate: {},
+};
+
+CheckOutCalendar.propTypes = {
+  checkInDate: PropTypes.shape({
+    day: PropTypes.number,
+    month: PropTypes.number,
+    year: PropTypes.number,
+  }),
+};
+
+export default CheckOutCalendar;
