@@ -54,11 +54,13 @@ class CheckOutCalendar extends React.Component {
   constructor(props) {
     super(props);
 
+    const { checkInDate } = this.props;
+
     this.state = {
       currentDay: new Date().getDay(),
-      currentDate: new Date().getDate(),
-      currentMonth: new Date().getMonth() + 1,
-      currentYear: new Date().getFullYear(),
+      currentDate: checkInDate.day, //new Date().getDate(),
+      currentMonth: checkInDate.month, //new Date().getMonth() + 1,
+      currentYear: checkInDate.year, //new Date().getFullYear(),
       daysInMonth: 0,
       startDay: 0,
       dates: {},
