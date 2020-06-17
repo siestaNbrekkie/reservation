@@ -87,13 +87,17 @@ class Date extends React.Component {
       defaultBackgroundCheckout = 'transparent';
     } else if (hoverCheckout || checkOut) {
       defaultBackgroundCheckout = '#B1ECED';
-    } 
+    }
 
     const firstRender = checkOut ? (
       <CheckOutCalendar
         checkInDate={dateClicked}
       />
     ) : <div />;
+
+    const checkInText = Object.keys(dateClicked).length
+      ? `${dateClicked.day}/${dateClicked.month}/${dateClicked.year}`
+      : 'Check-in';
 
     return (
       <DateDiv>
@@ -110,7 +114,7 @@ class Date extends React.Component {
             onMouseLeave={this.handleHover}
             onClick={this.handleClickCheckIn}
           >
-            Check-in
+            {checkInText}
           </CheckInOut>
           {/* --&gt; */}
           <svg width="27" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -131,7 +135,7 @@ class Date extends React.Component {
             checkOut={checkOut}
             clickDate={this.handleDateClick}
           />
-        ) : firstRender }
+        ) : firstRender}
       </DateDiv>
     );
   }
