@@ -372,11 +372,12 @@ class CheckInCalendar extends React.Component {
           <Days>Sa</Days>
         </Rows>
         <Rows>
-          {row1.map((day) => (
+          {row1.map((day, i) => (
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
               onClick={() => (clickDate({
+                dayOfWeek: i,
                 day,
                 month: currentMonth,
                 year: currentYear,
@@ -387,11 +388,12 @@ class CheckInCalendar extends React.Component {
           ))}
         </Rows>
         <Rows>
-          {row2.map((day) => (
+          {row2.map((day, i) => (
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
               onClick={() => (clickDate({
+                dayOfWeek: i,
                 day,
                 month: currentMonth,
                 year: currentYear,
@@ -402,11 +404,12 @@ class CheckInCalendar extends React.Component {
           ))}
         </Rows>
         <Rows>
-          {row3.map((day) => (
+          {row3.map((day, i) => (
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
               onClick={() => (clickDate({
+                dayOfWeek: i,
                 day,
                 month: currentMonth,
                 year: currentYear,
@@ -417,11 +420,12 @@ class CheckInCalendar extends React.Component {
           ))}
         </Rows>
         <Rows>
-          {row4.map((day) => (
+          {row4.map((day, i) => (
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
               onClick={() => (clickDate({
+                dayOfWeek: i,
                 day,
                 month: currentMonth,
                 year: currentYear,
@@ -432,11 +436,12 @@ class CheckInCalendar extends React.Component {
           ))}
         </Rows>
         <Rows>
-          {row5.map((day) => (
+          {row5.map((day, i) => (
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
               onClick={() => (clickDate({
+                dayOfWeek: i,
                 day,
                 month: currentMonth,
                 year: currentYear,
@@ -447,11 +452,12 @@ class CheckInCalendar extends React.Component {
           ))}
         </Rows>
         <Rows>
-          {row6.map((day) => (
+          {row6.map((day, i) => (
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
               onClick={() => (clickDate({
+                dayOfWeek: i,
                 day,
                 month: currentMonth,
                 year: currentYear,
@@ -467,7 +473,7 @@ class CheckInCalendar extends React.Component {
 }
 
 CheckInCalendar.defaultProps = {
-  clickDate: () => {},
+  clickDate: () => { },
 };
 
 CheckInCalendar.propTypes = {
