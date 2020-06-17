@@ -37,7 +37,7 @@ const Dates = styled.div`
   ${(props) => (typeof props.day === 'number' && props.available === undefined)
     && css`
       :hover {
-        background-color: rgb(228, 231, 231);
+        background-color: #B1ECED;
       };
       cursor: pointer;
     `}
