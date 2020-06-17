@@ -26,6 +26,7 @@ const Dates = styled.div`
     && css`
       text-decoration: line-through;
       color: rgb(216,216,216);
+      pointer-events: none;
     `}
   
   ${(props) => (typeof props.day === 'string')
