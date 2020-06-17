@@ -397,6 +397,9 @@ class CheckOutCalendar extends React.Component {
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
+              checkInDate={checkInDate.day === day
+                && checkInDate.month === currentMonth
+                && checkInDate.year === currentYear}
             >
               {day}
             </Dates>
@@ -407,6 +410,9 @@ class CheckOutCalendar extends React.Component {
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
+              checkInDate={checkInDate.day === day
+                  && checkInDate.month === currentMonth
+                  && checkInDate.year === currentYear}
             >
               {day}
             </Dates>
@@ -417,6 +423,9 @@ class CheckOutCalendar extends React.Component {
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
+              checkInDate={checkInDate.day === day
+                  && checkInDate.month === currentMonth
+                  && checkInDate.year === currentYear}
             >
               {day}
             </Dates>
@@ -427,6 +436,9 @@ class CheckOutCalendar extends React.Component {
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
+              checkInDate={checkInDate.day === day
+                  && checkInDate.month === currentMonth
+                  && checkInDate.year === currentYear}
             >
               {day}
             </Dates>
@@ -437,6 +449,9 @@ class CheckOutCalendar extends React.Component {
             <Dates
               day={day}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
+              checkInDate={checkInDate.day === day
+                  && checkInDate.month === currentMonth
+                  && checkInDate.year === currentYear}
             >
               {day}
             </Dates>
