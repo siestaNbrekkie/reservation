@@ -277,6 +277,27 @@ class CheckOutCalendar extends React.Component {
 
     const { checkInDate } = this.props;
 
+    const datesArr = Object.keys(dates);
+    const nextUnavailableDate = {};
+
+    let closestDate;
+    for (let i = 0; i < datesArr.length; i += 1) {
+      const dateSplit = datesArr[i].split('/');
+
+      if (closestDate === undefined && Number(dateSplit[0]) > checkInDate.day) {
+        closestDate = Number(dateSplit[0]);
+      } else if (Number(dateSplit[0]) < closestDate && Number(dateSplit[0]) > checkInDate.day) {
+        closestDate = Number(dateSplit[0]);
+      }
+
+      if (i === datesArr.length - 1) {
+        nextUnavailableDate.day = closestDate;
+        nextUnavailableDate.month = Number(dateSplit[1]);
+        nextUnavailableDate.year = Number(dateSplit[2]);
+        break;
+      }
+    }
+
     if (!Object.keys(dates).length) {
       return <div> </div>;
     }
@@ -389,9 +410,14 @@ class CheckOutCalendar extends React.Component {
                 checkInDate={checkInDate.day === day
                   && checkInDate.month === currentMonth
                   && checkInDate.year === currentYear}
-                unavailable={day < checkInDate.day
+                unavailable={
+                  (day < checkInDate.day
                   && currentMonth <= checkInDate.month
-                  && currentYear <= checkInDate.year}
+                  && currentYear <= checkInDate.year)
+                  || (day > nextUnavailableDate.day
+                    && currentMonth >= nextUnavailableDate.month
+                    && currentYear >= nextUnavailableDate.year)
+                }
               >
                 {day}
               </Dates>
@@ -407,9 +433,14 @@ class CheckOutCalendar extends React.Component {
               checkInDate={checkInDate.day === day
                 && checkInDate.month === currentMonth
                 && checkInDate.year === currentYear}
-              unavailable={day < checkInDate.day
+              unavailable={
+                (day < checkInDate.day
                 && currentMonth <= checkInDate.month
-                && currentYear <= checkInDate.year}
+                && currentYear <= checkInDate.year)
+                || (day > nextUnavailableDate.day
+                  && currentMonth >= nextUnavailableDate.month
+                  && currentYear >= nextUnavailableDate.year)
+              }
             >
               {day}
             </Dates>
@@ -423,9 +454,14 @@ class CheckOutCalendar extends React.Component {
               checkInDate={checkInDate.day === day
                 && checkInDate.month === currentMonth
                 && checkInDate.year === currentYear}
-              unavailable={day < checkInDate.day
+              unavailable={
+                (day < checkInDate.day
                 && currentMonth <= checkInDate.month
-                && currentYear <= checkInDate.year}
+                && currentYear <= checkInDate.year)
+                || (day > nextUnavailableDate.day
+                  && currentMonth >= nextUnavailableDate.month
+                  && currentYear >= nextUnavailableDate.year)
+              }
             >
               {day}
             </Dates>
@@ -439,9 +475,14 @@ class CheckOutCalendar extends React.Component {
               checkInDate={checkInDate.day === day
                 && checkInDate.month === currentMonth
                 && checkInDate.year === currentYear}
-              unavailable={day < checkInDate.day
+              unavailable={
+                (day < checkInDate.day
                 && currentMonth <= checkInDate.month
-                && currentYear <= checkInDate.year}
+                && currentYear <= checkInDate.year)
+                || (day > nextUnavailableDate.day
+                  && currentMonth >= nextUnavailableDate.month
+                  && currentYear >= nextUnavailableDate.year)
+              }
             >
               {day}
             </Dates>
@@ -455,9 +496,14 @@ class CheckOutCalendar extends React.Component {
               checkInDate={checkInDate.day === day
                 && checkInDate.month === currentMonth
                 && checkInDate.year === currentYear}
-              unavailable={day < checkInDate.day
+              unavailable={
+                (day < checkInDate.day
                 && currentMonth <= checkInDate.month
-                && currentYear <= checkInDate.year}
+                && currentYear <= checkInDate.year)
+                || (day > nextUnavailableDate.day
+                  && currentMonth >= nextUnavailableDate.month
+                  && currentYear >= nextUnavailableDate.year)
+              }
             >
               {day}
             </Dates>
@@ -471,9 +517,14 @@ class CheckOutCalendar extends React.Component {
               checkInDate={checkInDate.day === day
                 && checkInDate.month === currentMonth
                 && checkInDate.year === currentYear}
-              unavailable={day < checkInDate.day
+              unavailable={
+                (day < checkInDate.day
                 && currentMonth <= checkInDate.month
-                && currentYear <= checkInDate.year}
+                && currentYear <= checkInDate.year)
+                || (day > nextUnavailableDate.day
+                  && currentMonth >= nextUnavailableDate.month
+                  && currentYear >= nextUnavailableDate.year)
+              }
             >
               {day}
             </Dates>
