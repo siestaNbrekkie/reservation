@@ -6,7 +6,6 @@ const ReserveButton = (props) => {
   const { handleSubmit } = props;
   return (
     <div style={{
-      borderTop: '1px solid rgb(228, 231, 231)',
       marginTop: '35px',
       marginLeft: '24px',
       marginRight: '26px',
