@@ -4,6 +4,7 @@ import { ResverationsDiv, DetailsDiv, Details } from './style';
 
 import Date from './Date';
 import Guest from './Guest';
+import Fees from './Fees';
 import ReserveButton from './ReserveButton';
 
 
@@ -13,6 +14,7 @@ class App extends React.Component {
 
     this.state = {
       listingInfo: {},
+      numberOfNights: 1,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,7 +43,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { listingInfo } = this.state;
+    const { listingInfo, numberOfNights } = this.state;
 
     if (!listingInfo) {
       return <div> </div>;
@@ -78,6 +80,10 @@ class App extends React.Component {
         <Guest
           maxGuest={listingInfo.maxGuest}
           lowerBoundGuestNum={listingInfo.lowerBoundGuestNum}
+        />
+        <Fees
+          pricePerNight={listingInfo.pricePerNight}
+          numberOfNights={numberOfNights}
           serviceFee={listingInfo.serviceFee}
         />
         <ReserveButton handleSubmit={this.handleSubmit} />
