@@ -15,6 +15,7 @@ class App extends React.Component {
     this.state = {
       listingInfo: {},
       numberOfNights: 1,
+      showFees: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,6 +43,7 @@ class App extends React.Component {
 
     this.setState({
       numberOfNights: nights,
+      showFees: true,
     });
   }
 
@@ -52,7 +54,15 @@ class App extends React.Component {
   }
 
   render() {
-    const { listingInfo, numberOfNights } = this.state;
+    const { listingInfo, numberOfNights, showFees } = this.state;
+
+    const fees = showFees ? (
+      <Fees
+        pricePerNight={listingInfo.pricePerNight}
+        numberOfNights={numberOfNights}
+        serviceFee={listingInfo.serviceFee}
+      />
+    ) : <div />;
 
     if (!listingInfo) {
       return <div> </div>;
@@ -92,11 +102,7 @@ class App extends React.Component {
           maxGuest={listingInfo.maxGuest}
           lowerBoundGuestNum={listingInfo.lowerBoundGuestNum}
         />
-        <Fees
-          pricePerNight={listingInfo.pricePerNight}
-          numberOfNights={numberOfNights}
-          serviceFee={listingInfo.serviceFee}
-        />
+        {fees}
         <ReserveButton handleSubmit={this.handleSubmit} />
       </ResverationsDiv>
     );
