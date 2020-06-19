@@ -67,10 +67,10 @@ class Date extends React.Component {
   }
 
   handleCheckOutDate(date) {
-    console.log('checkout date is:', date);
     this.setState({
       checkOutDate: date,
-    })
+      checkOut: false,
+    });
   }
 
   render() {
@@ -80,6 +80,7 @@ class Date extends React.Component {
       hover,
       hoverCheckout,
       dateClicked,
+      checkOutDate,
     } = this.state;
 
     let defaultBackground = 'transparent';
@@ -97,12 +98,14 @@ class Date extends React.Component {
       defaultBackgroundCheckout = '#B1ECED';
     }
 
-    const firstRender = checkOut ? (
+    const checkOutDateClicked = (Object.keys(checkOutDate).length || checkOut) ? (
       <CheckOutCalendar
         checkInDate={dateClicked}
         handleCheckOutDate={this.handleCheckOutDate}
       />
     ) : <div />;
+
+    const firstRender = checkOut ? checkOutDateClicked : <div />;
 
     const checkInText = Object.keys(dateClicked).length
       ? `${dateClicked.day}/${dateClicked.month}/${dateClicked.year}`
@@ -140,8 +143,6 @@ class Date extends React.Component {
         </DateBox>
         {checkIn ? (
           <CheckInCalendar
-            checkIn={checkIn}
-            checkOut={checkOut}
             clickDate={this.handleDateClick}
           />
         ) : firstRender}
