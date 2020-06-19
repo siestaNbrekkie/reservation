@@ -64,6 +64,19 @@ class App extends React.Component {
       />
     ) : <div />;
 
+    const textUnderButton = showFees ? (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        paddingBottom: '24px',
+        fontSize: 12,
+        color: '#8F8F8F',
+      }}
+      >
+        You won&apos;t be charged yet
+      </div>
+    ) : <div />;
+
     if (!listingInfo) {
       return <div> </div>;
     }
@@ -104,6 +117,7 @@ class App extends React.Component {
         />
         {fees}
         <ReserveButton handleSubmit={this.handleSubmit} />
+        {textUnderButton}
       </ResverationsDiv>
     );
   }
