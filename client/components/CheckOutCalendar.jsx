@@ -38,6 +38,7 @@ const Dates = styled.div`
     && css`
       :hover {
         background-color: #B1ECED;
+        color: white;
       };
       cursor: pointer;
     `}
@@ -48,6 +49,12 @@ const Dates = styled.div`
       color: white;
       pointer-events: none;
     `}
+
+    ${(props) => (props.hover && typeof props.day === 'number' && props.available === undefined)
+    && css`
+      background-color: #B1ECED;
+      color: white;
+      `}
 `;
 
 
@@ -66,6 +73,7 @@ class CheckOutCalendar extends React.Component {
       startDay: 0,
       dates: {},
       nextUnavailableDate: {},
+      dateHovered: {},
     };
 
     this.getDates = this.getDates.bind(this);
@@ -75,6 +83,7 @@ class CheckOutCalendar extends React.Component {
     this.obtainDaysInPrevMonth = this.obtainDaysInPrevMonth.bind(this);
     this.obtainDaysInNextMonth = this.obtainDaysInNextMonth.bind(this);
     this.getNextUnavailableDate = this.getNextUnavailableDate.bind(this);
+    this.handleHover = this.handleHover.bind(this);
   }
 
   componentDidMount() {
@@ -300,6 +309,12 @@ class CheckOutCalendar extends React.Component {
     this.getDates(currentDateBeforeAsyncSetState);
   }
 
+  handleHover(date) {
+    this.setState({
+      dateHovered: date,
+    });
+  }
+
   render() {
     const {
       currentMonth,
@@ -308,6 +323,7 @@ class CheckOutCalendar extends React.Component {
       daysInMonth,
       dates,
       nextUnavailableDate,
+      dateHovered,
     } = this.state;
 
     const { checkInDate } = this.props;
@@ -434,6 +450,11 @@ class CheckOutCalendar extends React.Component {
                   || (currentMonth > nextUnavailableDate.month
                     || currentYear > nextUnavailableDate.year)
                 }
+                onMouseEnter={() => this.handleHover({ day, month: currentMonth, year: currentYear })}
+                hover={
+                  day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
+                  && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
+                }
               >
                 {day}
               </Dates>
@@ -459,6 +480,11 @@ class CheckOutCalendar extends React.Component {
                 || (currentMonth > nextUnavailableDate.month
                   || currentYear > nextUnavailableDate.year)
               }
+              onMouseEnter={() => this.handleHover({ day, month: currentMonth, year: currentYear })}
+              hover={
+                day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
+                && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
+              }
             >
               {day}
             </Dates>
@@ -481,6 +507,11 @@ class CheckOutCalendar extends React.Component {
                   && currentYear >= nextUnavailableDate.year)
                 || (currentMonth > nextUnavailableDate.month
                   || currentYear > nextUnavailableDate.year)
+              }
+              onMouseEnter={() => this.handleHover({ day, month: currentMonth, year: currentYear })}
+              hover={
+                day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
+                && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
               }
             >
               {day}
@@ -505,6 +536,11 @@ class CheckOutCalendar extends React.Component {
                 || (currentMonth > nextUnavailableDate.month
                   || currentYear > nextUnavailableDate.year)
               }
+              onMouseEnter={() => this.handleHover({ day, month: currentMonth, year: currentYear })}
+              hover={
+                day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
+                && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
+              }
             >
               {day}
             </Dates>
@@ -528,6 +564,11 @@ class CheckOutCalendar extends React.Component {
                 || (currentMonth > nextUnavailableDate.month
                   || currentYear > nextUnavailableDate.year)
               }
+              onMouseEnter={() => this.handleHover({ day, month: currentMonth, year: currentYear })}
+              hover={
+                day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
+                && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
+              }
             >
               {day}
             </Dates>
@@ -550,6 +591,11 @@ class CheckOutCalendar extends React.Component {
                   && currentYear >= nextUnavailableDate.year)
                 || (currentMonth > nextUnavailableDate.month
                   || currentYear > nextUnavailableDate.year)
+              }
+              onMouseEnter={() => this.handleHover({ day, month: currentMonth, year: currentYear })}
+              hover={
+                day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
+                && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
               }
             >
               {day}
