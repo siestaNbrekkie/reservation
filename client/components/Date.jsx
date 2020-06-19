@@ -111,6 +111,10 @@ class Date extends React.Component {
       ? `${dateClicked.day}/${dateClicked.month}/${dateClicked.year}`
       : 'Check-in';
 
+    const checkOutText = Object.keys(checkOutDate).length
+      ? `${checkOutDate.day}/${checkOutDate.month}/${checkOutDate.year}`
+      : 'Checkout';
+
     return (
       <DateDiv>
         <div style={{
@@ -138,7 +142,7 @@ class Date extends React.Component {
             onMouseLeave={this.handleHoverCheckout}
             onClick={this.handleClickCheckOut}
           >
-            Checkout
+            {checkOutText}
           </CheckInOut>
         </DateBox>
         {checkIn ? (
