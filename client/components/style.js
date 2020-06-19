@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 export const ResverationsDiv = styled.div`
   width: 374px;
-  // height: 456px;
   height: auto;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
   background: rgb(255, 255, 255);
   border-radius: 3px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
 `;
 
 export const DetailsDiv = styled.div`
