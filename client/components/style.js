@@ -210,9 +210,7 @@ export const CloseButton = styled.div`
 
 export const FeeBox = styled.div`
   margin: 24px;
-  padding-bottom: 12px;
   color: #484848;
-  border-bottom: 1px solid rgb(228, 231, 231)
 `;
 
 export const RowFees = styled.div`

@@ -26,13 +26,29 @@ const Fees = (props) => {
           {Math.floor(Math.random() * (251 - 1) + 50)}
         </div>
       </RowFees>
-      <RowFees>
+      <RowFees style={{
+        borderBottom: '1px solid rgb(228, 231, 231)',
+        paddingBottom: '12px',
+      }}
+      >
         <div>
           Service fee
         </div>
         <div>
           $
           {serviceFee}
+        </div>
+      </RowFees>
+      <RowFees style={{
+        fontWeight: 'bold',
+        paddingTop: '14px',
+      }}
+      >
+        <div>
+          Total
+        </div>
+        <div>
+          $total
         </div>
       </RowFees>
     </FeeBox>
