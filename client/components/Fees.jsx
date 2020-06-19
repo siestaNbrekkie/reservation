@@ -5,6 +5,8 @@ import { FeeBox, RowFees } from './style';
 const Fees = (props) => {
   const { pricePerNight, numberOfNights, serviceFee } = props;
   const nightText = (numberOfNights === 1) ? 'night' : 'nights';
+  const cleaningFee = Math.floor(Math.random() * (251 - 1) + 50);
+  const totalCost = (pricePerNight * numberOfNights) + cleaningFee + serviceFee;
 
   return (
     <FeeBox>
@@ -23,7 +25,7 @@ const Fees = (props) => {
         </div>
         <div>
           $
-          {Math.floor(Math.random() * (251 - 1) + 50)}
+          {cleaningFee}
         </div>
       </RowFees>
       <RowFees style={{
@@ -48,7 +50,8 @@ const Fees = (props) => {
           Total
         </div>
         <div>
-          $total
+          $
+          {totalCost}
         </div>
       </RowFees>
     </FeeBox>
