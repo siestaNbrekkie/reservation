@@ -22,7 +22,7 @@ const Dates = styled.div`
   font-size: 14px;
   font-weight: bold;
   
-  ${(props) => (props.available === false)
+  ${(props) => (props.available === false || props.unavailable)
     && css`
       text-decoration: line-through;
       color: rgb(216,216,216);
@@ -375,6 +375,7 @@ class CheckInCalendar extends React.Component {
           {row1.map((day, i) => (
             <Dates
               day={day}
+              unavailable={(day <= new Date().getDate() && currentMonth <= new Date().getMonth() + 1 && currentYear <= new Date().getFullYear())}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
               onClick={() => (clickDate({
                 dayOfWeek: i,
@@ -391,6 +392,7 @@ class CheckInCalendar extends React.Component {
           {row2.map((day, i) => (
             <Dates
               day={day}
+              unavailable={(day <= new Date().getDate() && currentMonth <= new Date().getMonth() + 1 && currentYear <= new Date().getFullYear())}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
               onClick={() => (clickDate({
                 dayOfWeek: i,
@@ -407,6 +409,7 @@ class CheckInCalendar extends React.Component {
           {row3.map((day, i) => (
             <Dates
               day={day}
+              unavailable={(day <= new Date().getDate() && currentMonth <= new Date().getMonth() + 1 && currentYear <= new Date().getFullYear())}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
               onClick={() => (clickDate({
                 dayOfWeek: i,
@@ -423,6 +426,7 @@ class CheckInCalendar extends React.Component {
           {row4.map((day, i) => (
             <Dates
               day={day}
+              unavailable={(day <= new Date().getDate() && currentMonth <= new Date().getMonth() + 1 && currentYear <= new Date().getFullYear())}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
               onClick={() => (clickDate({
                 dayOfWeek: i,
@@ -439,6 +443,7 @@ class CheckInCalendar extends React.Component {
           {row5.map((day, i) => (
             <Dates
               day={day}
+              unavailable={(day <= new Date().getDate() && currentMonth <= new Date().getMonth() + 1 && currentYear <= new Date().getFullYear())}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
               onClick={() => (clickDate({
                 dayOfWeek: i,
@@ -455,6 +460,7 @@ class CheckInCalendar extends React.Component {
           {row6.map((day, i) => (
             <Dates
               day={day}
+              unavailable={(day <= new Date().getDate() && currentMonth <= new Date().getMonth() + 1 && currentYear <= new Date().getFullYear())}
               available={dates[`${day}/${currentMonth}/${currentYear}`]}
               onClick={() => (clickDate({
                 dayOfWeek: i,
