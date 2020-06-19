@@ -25,7 +25,7 @@ const GuestForm = (props) => {
   const maxGuestsReached = {
     pointerEvents: (numOfGuests === maxGuest ? 'none' : 'auto'),
     borderColor: (numOfGuests === maxGuest ? '#EBEBEB' : '#222222'),
-    color: (numOfGuests === maxGuest ? '#EBEBEB' : '#222222'),
+    color: (numOfGuests === maxGuest ? '#EBEBEB' : '#008489'),
   };
 
   return (
@@ -41,7 +41,7 @@ const GuestForm = (props) => {
             style={{
               pointerEvents: (adults === 1 ? 'none' : 'auto'),
               borderColor: (adults === 1 ? '#EBEBEB' : '#222222'),
-              color: (adults === 1 ? '#EBEBEB' : '#222222'),
+              color: (adults === 1 ? '#EBEBEB' : '#008489'),
             }}
             id="adultsSubtract"
             onClick={subtractGuests}
@@ -74,7 +74,7 @@ const GuestForm = (props) => {
             style={{
               pointerEvents: (childrenGuests === 0 ? 'none' : 'auto'),
               borderColor: (childrenGuests === 0 ? '#EBEBEB' : '#222222'),
-              color: (childrenGuests === 0 ? '#EBEBEB' : '#222222'),
+              color: (childrenGuests === 0 ? '#EBEBEB' : '#008489'),
             }}
             id="childrenGuestsSubtract"
             onClick={subtractGuests}
@@ -107,7 +107,7 @@ const GuestForm = (props) => {
             style={{
               pointerEvents: (infants === 0 ? 'none' : 'auto'),
               borderColor: (infants === 0 ? '#EBEBEB' : '#222222'),
-              color: (infants === 0 ? '#EBEBEB' : '#222222'),
+              color: (infants === 0 ? '#EBEBEB' : '#008489'),
             }}
             id="infantsSubtract"
             onClick={subtractGuests}
@@ -121,7 +121,7 @@ const GuestForm = (props) => {
             style={{
               pointerEvents: (infants === 5 ? 'none' : 'auto'),
               borderColor: (infants === 5 ? '#EBEBEB' : '#222222'),
-              color: (infants === 5 ? '#EBEBEB' : '#222222'),
+              color: (infants === 5 ? '#EBEBEB' : '#008489'),
             }}
             id="infantsAdd"
             onClick={addGuests}
@@ -153,9 +153,9 @@ GuestForm.defaultProps = {
   childrenGuests: 0,
   infants: 0,
   maxGuest: 0,
-  onClick: () => {},
-  addGuests: () => {},
-  subtractGuests: () => {},
+  onClick: () => { },
+  addGuests: () => { },
+  subtractGuests: () => { },
 };
 
 GuestForm.propTypes = {
