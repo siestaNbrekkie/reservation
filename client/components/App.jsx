@@ -18,6 +18,7 @@ class App extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.calculateNights = this.calculateNights.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +35,14 @@ class App extends React.Component {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  calculateNights(checkIn, checkOut) {
+    const nights = checkOut.day - checkIn.day;
+
+    this.setState({
+      numberOfNights: nights,
+    });
   }
 
   handleSubmit(event) {
@@ -76,7 +85,9 @@ class App extends React.Component {
             </Details>
           </div>
         </DetailsDiv>
-        <Date />
+        <Date
+          calculateNights={this.calculateNights}
+        />
         <Guest
           maxGuest={listingInfo.maxGuest}
           lowerBoundGuestNum={listingInfo.lowerBoundGuestNum}

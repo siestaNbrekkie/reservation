@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CheckInCalendar from './CheckInCalendar';
 import CheckOutCalendar from './CheckOutCalendar';
 import { DateDiv, DateBox, CheckInOut } from './style';
@@ -83,6 +84,8 @@ class Date extends React.Component {
       checkOutDate,
     } = this.state;
 
+    const { calculateNights } = this.props;
+
     let defaultBackground = 'transparent';
     let defaultBackgroundCheckout = 'transparent';
 
@@ -102,6 +105,7 @@ class Date extends React.Component {
       <CheckOutCalendar
         checkInDate={dateClicked}
         handleCheckOutDate={this.handleCheckOutDate}
+        calculateNights={calculateNights}
       />
     ) : <div />;
 
@@ -154,5 +158,13 @@ class Date extends React.Component {
     );
   }
 }
+
+Date.defaultProps = {
+  calculateNights: () => {},
+};
+
+Date.propTypes = {
+  calculateNights: PropTypes.func,
+};
 
 export default Date;

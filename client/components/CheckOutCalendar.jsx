@@ -326,7 +326,7 @@ class CheckOutCalendar extends React.Component {
       dateHovered,
     } = this.state;
 
-    const { checkInDate, handleCheckOutDate } = this.props;
+    const { checkInDate, handleCheckOutDate, calculateNights } = this.props;
 
     if (!Object.keys(dates).length) {
       return <div> </div>;
@@ -455,11 +455,18 @@ class CheckOutCalendar extends React.Component {
                   day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
                   && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
                 }
-                onClick={() => (handleCheckOutDate({
-                  day,
-                  month: currentMonth,
-                  year: currentYear,
-                }))}
+                onClick={() => {
+                  handleCheckOutDate({
+                    day,
+                    month: currentMonth,
+                    year: currentYear,
+                  });
+                  calculateNights(checkInDate, {
+                    day,
+                    month: currentMonth,
+                    year: currentYear,
+                  });
+                }}
               >
                 {day}
               </Dates>
@@ -490,11 +497,18 @@ class CheckOutCalendar extends React.Component {
                 day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
                 && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
               }
-              onClick={() => (handleCheckOutDate({
-                day,
-                month: currentMonth,
-                year: currentYear,
-              }))}
+              onClick={() => {
+                handleCheckOutDate({
+                  day,
+                  month: currentMonth,
+                  year: currentYear,
+                });
+                calculateNights(checkInDate, {
+                  day,
+                  month: currentMonth,
+                  year: currentYear,
+                });
+              }}
             >
               {day}
             </Dates>
@@ -523,11 +537,18 @@ class CheckOutCalendar extends React.Component {
                 day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
                 && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
               }
-              onClick={() => (handleCheckOutDate({
-                day,
-                month: currentMonth,
-                year: currentYear,
-              }))}
+              onClick={() => {
+                handleCheckOutDate({
+                  day,
+                  month: currentMonth,
+                  year: currentYear,
+                });
+                calculateNights(checkInDate, {
+                  day,
+                  month: currentMonth,
+                  year: currentYear,
+                });
+              }}
             >
               {day}
             </Dates>
@@ -556,11 +577,18 @@ class CheckOutCalendar extends React.Component {
                 day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
                 && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
               }
-              onClick={() => (handleCheckOutDate({
-                day,
-                month: currentMonth,
-                year: currentYear,
-              }))}
+              onClick={() => {
+                handleCheckOutDate({
+                  day,
+                  month: currentMonth,
+                  year: currentYear,
+                });
+                calculateNights(checkInDate, {
+                  day,
+                  month: currentMonth,
+                  year: currentYear,
+                });
+              }}
             >
               {day}
             </Dates>
@@ -589,11 +617,18 @@ class CheckOutCalendar extends React.Component {
                 day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
                 && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
               }
-              onClick={() => (handleCheckOutDate({
-                day,
-                month: currentMonth,
-                year: currentYear,
-              }))}
+              onClick={() => {
+                handleCheckOutDate({
+                  day,
+                  month: currentMonth,
+                  year: currentYear,
+                });
+                calculateNights(checkInDate, {
+                  day,
+                  month: currentMonth,
+                  year: currentYear,
+                });
+              }}
             >
               {day}
             </Dates>
@@ -622,11 +657,18 @@ class CheckOutCalendar extends React.Component {
                 day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
                 && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
               }
-              onClick={() => (handleCheckOutDate({
-                day,
-                month: currentMonth,
-                year: currentYear,
-              }))}
+              onClick={() => {
+                handleCheckOutDate({
+                  day,
+                  month: currentMonth,
+                  year: currentYear,
+                });
+                calculateNights(checkInDate, {
+                  day,
+                  month: currentMonth,
+                  year: currentYear,
+                });
+              }}
             >
               {day}
             </Dates>
@@ -640,6 +682,7 @@ class CheckOutCalendar extends React.Component {
 CheckOutCalendar.defaultProps = {
   checkInDate: {},
   handleCheckOutDate: {},
+  calculateNights: () => {},
 };
 
 CheckOutCalendar.propTypes = {
@@ -654,6 +697,7 @@ CheckOutCalendar.propTypes = {
     month: PropTypes.number,
     year: PropTypes.number,
   }),
+  calculateNights: PropTypes.func,
 };
 
 export default CheckOutCalendar;
