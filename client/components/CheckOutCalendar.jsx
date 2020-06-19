@@ -326,7 +326,7 @@ class CheckOutCalendar extends React.Component {
       dateHovered,
     } = this.state;
 
-    const { checkInDate } = this.props;
+    const { checkInDate, handleCheckOutDate } = this.props;
 
     if (!Object.keys(dates).length) {
       return <div> </div>;
@@ -455,6 +455,11 @@ class CheckOutCalendar extends React.Component {
                   day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
                   && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
                 }
+                onClick={() => (handleCheckOutDate({
+                  day,
+                  month: currentMonth,
+                  year: currentYear,
+                }))}
               >
                 {day}
               </Dates>
@@ -485,6 +490,11 @@ class CheckOutCalendar extends React.Component {
                 day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
                 && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
               }
+              onClick={() => (handleCheckOutDate({
+                day,
+                month: currentMonth,
+                year: currentYear,
+              }))}
             >
               {day}
             </Dates>
@@ -513,6 +523,11 @@ class CheckOutCalendar extends React.Component {
                 day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
                 && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
               }
+              onClick={() => (handleCheckOutDate({
+                day,
+                month: currentMonth,
+                year: currentYear,
+              }))}
             >
               {day}
             </Dates>
@@ -541,6 +556,11 @@ class CheckOutCalendar extends React.Component {
                 day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
                 && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
               }
+              onClick={() => (handleCheckOutDate({
+                day,
+                month: currentMonth,
+                year: currentYear,
+              }))}
             >
               {day}
             </Dates>
@@ -569,6 +589,11 @@ class CheckOutCalendar extends React.Component {
                 day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
                 && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
               }
+              onClick={() => (handleCheckOutDate({
+                day,
+                month: currentMonth,
+                year: currentYear,
+              }))}
             >
               {day}
             </Dates>
@@ -597,6 +622,11 @@ class CheckOutCalendar extends React.Component {
                 day > checkInDate.day && currentMonth >= checkInDate.month && currentYear >= checkInDate.year
                 && day < dateHovered.day && currentMonth <= dateHovered.month && currentYear <= dateHovered.year
               }
+              onClick={() => (handleCheckOutDate({
+                day,
+                month: currentMonth,
+                year: currentYear,
+              }))}
             >
               {day}
             </Dates>
@@ -609,11 +639,17 @@ class CheckOutCalendar extends React.Component {
 
 CheckOutCalendar.defaultProps = {
   checkInDate: {},
+  handleCheckOutDate: {},
 };
 
 CheckOutCalendar.propTypes = {
   checkInDate: PropTypes.shape({
     dayOfWeek: PropTypes.number,
+    day: PropTypes.number,
+    month: PropTypes.number,
+    year: PropTypes.number,
+  }),
+  handleCheckOutDate: PropTypes.shape({
     day: PropTypes.number,
     month: PropTypes.number,
     year: PropTypes.number,
