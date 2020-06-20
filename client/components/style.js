@@ -39,7 +39,7 @@ export const CalendarBox = styled.div`
 
 export const TopHeader = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 export const MonthAndYear = styled.div`
@@ -60,8 +60,7 @@ export const ArrowBox = styled.div`
   align-items: center;
   width: 37px;
   height: 31px;
-  margin-top: 18px;
-  margin-bottom: 18px;
+  margin: 18px 20px 18px 20px;
   border: 1px solid rgb(228, 231, 231);
   border-radius: 3px;
   cursor: pointer;
