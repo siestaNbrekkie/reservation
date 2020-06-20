@@ -36,7 +36,6 @@ class Date extends React.Component {
 
   handleClickCheckOut(event) {
     event.preventDefault();
-    console.log('fhsdhfbeysigdabk')
 
     this.setState({
       checkOut: true,
@@ -150,7 +149,7 @@ class Date extends React.Component {
             style={{ paddingLeft: '7px', backgroundColor: `${defaultBackgroundCheckout}` }}
             onMouseEnter={this.handleHoverCheckout}
             onMouseLeave={this.handleHoverCheckout}
-            onClick={!Object.keys(dateClicked).length ? this.handleClickCheckIn : this.handleCheckOutDate}
+            onClick={!Object.keys(dateClicked).length ? this.handleClickCheckIn : this.handleClickCheckOut}
           >
             {checkOutText}
           </CheckInOut>
