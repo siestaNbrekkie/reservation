@@ -90,6 +90,21 @@ export const DateDiv = styled.div`
   margin-top: 60px;
 `;
 
+export const CloseCalendar = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-right: 22px;
+  font-size: 12;
+  font-weight: bold;
+  color: #008489;
+  cursor: pointer;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 export const DateBox = styled.div`
   display: flex;
   justify-content: space-around;

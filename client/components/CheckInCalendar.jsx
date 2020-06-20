@@ -9,6 +9,7 @@ import {
   ArrowBox,
   Rows,
   Days,
+  CloseCalendar,
 } from './style';
 
 const Dates = styled.div`
@@ -473,6 +474,9 @@ class CheckInCalendar extends React.Component {
             </Dates>
           ))}
         </Rows>
+        <CloseCalendar>
+          Close
+        </CloseCalendar>
       </CalendarBox>
     );
   }
