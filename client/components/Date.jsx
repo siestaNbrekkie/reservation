@@ -36,6 +36,7 @@ class Date extends React.Component {
 
   handleClickCheckOut(event) {
     event.preventDefault();
+    console.log('fhsdhfbeysigdabk')
 
     this.setState({
       checkOut: true,
@@ -106,6 +107,12 @@ class Date extends React.Component {
         checkInDate={dateClicked}
         handleCheckOutDate={this.handleCheckOutDate}
         calculateNights={calculateNights}
+        onClick={() => {
+          if (!Object.keys(dateClicked).length) {
+            return (this.handleClickCheckIn);
+          }
+          return this.handleCheckOutDate;
+        }}
       />
     ) : <div />;
 
@@ -136,7 +143,6 @@ class Date extends React.Component {
           >
             {checkInText}
           </CheckInOut>
-          {/* --&gt; */}
           <svg width="27" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <path d="M 0 25 h 25 L 19 17 M 26 25 L 19 34" stroke="#575757" strokeWidth="1" fill="transparent" />
           </svg>
@@ -144,7 +150,7 @@ class Date extends React.Component {
             style={{ paddingLeft: '7px', backgroundColor: `${defaultBackgroundCheckout}` }}
             onMouseEnter={this.handleHoverCheckout}
             onMouseLeave={this.handleHoverCheckout}
-            onClick={this.handleClickCheckOut}
+            onClick={!Object.keys(dateClicked).length ? this.handleClickCheckIn : this.handleCheckOutDate}
           >
             {checkOutText}
           </CheckInOut>
@@ -160,7 +166,7 @@ class Date extends React.Component {
 }
 
 Date.defaultProps = {
-  calculateNights: () => {},
+  calculateNights: () => { },
 };
 
 Date.propTypes = {
