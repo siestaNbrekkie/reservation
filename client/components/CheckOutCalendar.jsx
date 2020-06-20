@@ -31,7 +31,7 @@ const Dates = styled.div`
   
   ${(props) => (typeof props.day === 'string')
     && css`
-      border: none;
+      border-color: transparent;
     `}
 
   ${(props) => (typeof props.day === 'number' && props.available === undefined)
