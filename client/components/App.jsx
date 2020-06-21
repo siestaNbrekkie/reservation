@@ -51,9 +51,10 @@ class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const { showModal } = this.state;
 
     this.setState({
-      showModal: true,
+      showModal: !showModal,
     });
   }
 
@@ -126,7 +127,7 @@ class App extends React.Component {
         />
         {fees}
         <ReserveButton handleSubmit={this.handleSubmit} />
-        <Modal showModal={showModal} />
+        <Modal showModal={showModal} onClose={this.handleSubmit} />
         {textUnderButton}
       </ResverationsDiv>
     );

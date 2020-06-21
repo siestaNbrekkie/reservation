@@ -9,7 +9,7 @@ class Modal extends React.Component {
   }
 
   render() {
-    const { showModal } = this.props;
+    const { showModal, onClose } = this.props;
 
     if (!showModal) {
       return null;
@@ -18,6 +18,12 @@ class Modal extends React.Component {
     return (
       <div>
         MODAL
+        <button
+          type="button"
+          onClick={(event) => onClose(event)}
+        >
+          Close
+        </button>
       </div>
     );
   }
@@ -25,10 +31,12 @@ class Modal extends React.Component {
 
 Modal.defaultProps = {
   showModal: false,
+  onClose: () => {},
 };
 
 Modal.propTypes = {
   showModal: PropTypes.bool,
+  onClose: PropTypes.func,
 };
 
 export default Modal;
