@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -8,6 +9,12 @@ class Modal extends React.Component {
   }
 
   render() {
+    const { showModal } = this.props;
+
+    if (!showModal) {
+      return null;
+    }
+
     return (
       <div>
         MODAL
@@ -15,5 +22,13 @@ class Modal extends React.Component {
     );
   }
 }
+
+Modal.defaultProps = {
+  showModal: false,
+};
+
+Modal.propTypes = {
+  showModal: PropTypes.bool,
+};
 
 export default Modal;

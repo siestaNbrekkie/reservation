@@ -6,6 +6,7 @@ import Date from './Date';
 import Guest from './Guest';
 import Fees from './Fees';
 import ReserveButton from './ReserveButton';
+import Modal from './Modal';
 
 
 class App extends React.Component {
@@ -16,6 +17,7 @@ class App extends React.Component {
       listingInfo: {},
       numberOfNights: 1,
       showFees: false,
+      showModal: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -50,11 +52,18 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    window.alert('Submitting form!');
+    this.setState({
+      showModal: true,
+    });
   }
 
   render() {
-    const { listingInfo, numberOfNights, showFees } = this.state;
+    const {
+      listingInfo,
+      numberOfNights,
+      showFees,
+      showModal,
+    } = this.state;
 
     const fees = showFees ? (
       <Fees
@@ -117,6 +126,7 @@ class App extends React.Component {
         />
         {fees}
         <ReserveButton handleSubmit={this.handleSubmit} />
+        <Modal showModal={showModal} />
         {textUnderButton}
       </ResverationsDiv>
     );
