@@ -111,7 +111,7 @@ class Date extends React.Component {
       defaultBackgroundCheckout = '#B1ECED';
     }
 
-    const checkOutDateClicked = (Object.keys(checkOutDate).length || checkOut) ? (
+    const closeClick = close ? <div /> : (
       <CheckOutCalendar
         checkInDate={dateClicked}
         handleCheckOutDate={this.handleCheckOutDate}
@@ -122,8 +122,12 @@ class Date extends React.Component {
           }
           return this.handleCheckOutDate;
         }}
+        closeCalendar={this.closeCalendar}
       />
-    ) : <div />;
+    );
+
+    const checkOutDateClicked = (Object.keys(checkOutDate).length || checkOut)
+      ? closeClick : <div />;
 
     const firstRender = checkOut ? checkOutDateClicked : <div />;
 

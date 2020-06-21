@@ -9,6 +9,7 @@ import {
   ArrowBox,
   Rows,
   Days,
+  CloseCalendar,
 } from './style';
 
 const Dates = styled.div`
@@ -326,7 +327,12 @@ class CheckOutCalendar extends React.Component {
       dateHovered,
     } = this.state;
 
-    const { checkInDate, handleCheckOutDate, calculateNights } = this.props;
+    const {
+      checkInDate,
+      handleCheckOutDate,
+      calculateNights,
+      closeCalendar,
+    } = this.props;
 
     if (!Object.keys(dates).length) {
       return <div> </div>;
@@ -674,6 +680,9 @@ class CheckOutCalendar extends React.Component {
             </Dates>
           ))}
         </Rows>
+        <CloseCalendar onClick={closeCalendar}>
+          Close
+        </CloseCalendar>
       </CalendarBox>
     );
   }
@@ -683,6 +692,7 @@ CheckOutCalendar.defaultProps = {
   checkInDate: {},
   handleCheckOutDate: {},
   calculateNights: () => {},
+  closeCalendar: () => {},
 };
 
 CheckOutCalendar.propTypes = {
@@ -698,6 +708,7 @@ CheckOutCalendar.propTypes = {
     year: PropTypes.number,
   }),
   calculateNights: PropTypes.func,
+  closeCalendar: PropTypes.func,
 };
 
 export default CheckOutCalendar;
