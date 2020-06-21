@@ -267,7 +267,7 @@ class CheckInCalendar extends React.Component {
       dates,
     } = this.state;
 
-    const { clickDate } = this.props;
+    const { clickDate, closeCalendar } = this.props;
 
     if (!Object.keys(dates).length) {
       return <div> </div>;
@@ -474,7 +474,7 @@ class CheckInCalendar extends React.Component {
             </Dates>
           ))}
         </Rows>
-        <CloseCalendar>
+        <CloseCalendar onClick={closeCalendar}>
           Close
         </CloseCalendar>
       </CalendarBox>
@@ -484,10 +484,12 @@ class CheckInCalendar extends React.Component {
 
 CheckInCalendar.defaultProps = {
   clickDate: () => { },
+  closeCalendar: () => { },
 };
 
 CheckInCalendar.propTypes = {
   clickDate: PropTypes.func,
+  closeCalendar: PropTypes.func,
 };
 
 export default CheckInCalendar;

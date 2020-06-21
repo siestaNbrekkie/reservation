@@ -94,12 +94,13 @@ export const CloseCalendar = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  margin-top: 10px;
   margin-right: 22px;
   font-size: 12;
   font-weight: bold;
   color: #008489;
   cursor: pointer;
-  
+
   &:hover {
     text-decoration: underline;
   }

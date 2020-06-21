@@ -15,6 +15,7 @@ class Date extends React.Component {
       hoverCheckout: false,
       dateClicked: {},
       checkOutDate: {},
+      close: false,
     };
 
     this.handleDateClick = this.handleDateClick.bind(this);
@@ -23,6 +24,7 @@ class Date extends React.Component {
     this.handleHover = this.handleHover.bind(this);
     this.handleHoverCheckout = this.handleHoverCheckout.bind(this);
     this.handleCheckOutDate = this.handleCheckOutDate.bind(this);
+    this.closeCalendar = this.closeCalendar.bind(this);
   }
 
   handleClickCheckIn(event) {
@@ -31,6 +33,7 @@ class Date extends React.Component {
     this.setState({
       checkIn: true,
       checkOut: false,
+      close: false,
     });
   }
 
@@ -74,6 +77,12 @@ class Date extends React.Component {
     });
   }
 
+  closeCalendar() {
+    this.setState({
+      close: true,
+    });
+  }
+
   render() {
     const {
       checkIn,
@@ -82,6 +91,7 @@ class Date extends React.Component {
       hoverCheckout,
       dateClicked,
       checkOutDate,
+      close,
     } = this.state;
 
     const { calculateNights } = this.props;
@@ -116,6 +126,13 @@ class Date extends React.Component {
     ) : <div />;
 
     const firstRender = checkOut ? checkOutDateClicked : <div />;
+
+    const isClosed = (close ? <div /> : (
+      <CheckInCalendar
+        clickDate={this.handleDateClick}
+        closeCalendar={this.closeCalendar}
+      />
+    ));
 
     const checkInText = Object.keys(dateClicked).length
       ? `${dateClicked.day}/${dateClicked.month}/${dateClicked.year}`
@@ -154,11 +171,7 @@ class Date extends React.Component {
             {checkOutText}
           </CheckInOut>
         </DateBox>
-        {checkIn ? (
-          <CheckInCalendar
-            clickDate={this.handleDateClick}
-          />
-        ) : firstRender}
+        {checkIn ? isClosed : firstRender}
       </DateDiv>
     );
   }
