@@ -78,8 +78,11 @@ class Date extends React.Component {
   }
 
   closeCalendar() {
+    const { checkIn } = this.state;
+
     this.setState({
       close: true,
+      checkIn: !checkIn,
     });
   }
 
