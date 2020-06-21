@@ -690,7 +690,7 @@ class CheckOutCalendar extends React.Component {
 
 CheckOutCalendar.defaultProps = {
   checkInDate: {},
-  handleCheckOutDate: {},
+  handleCheckOutDate: () => {},
   calculateNights: () => {},
   closeCalendar: () => {},
 };
@@ -702,11 +702,7 @@ CheckOutCalendar.propTypes = {
     month: PropTypes.number,
     year: PropTypes.number,
   }),
-  handleCheckOutDate: PropTypes.shape({
-    day: PropTypes.number,
-    month: PropTypes.number,
-    year: PropTypes.number,
-  }),
+  handleCheckOutDate: PropTypes.func,
   calculateNights: PropTypes.func,
   closeCalendar: PropTypes.func,
 };
