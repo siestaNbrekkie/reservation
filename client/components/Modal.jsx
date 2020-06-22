@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ModalDiv, ModalBody, CloseModal } from './style';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -16,22 +17,28 @@ class Modal extends React.Component {
     }
 
     return (
-      <div>
+      <ModalDiv>
+        <ModalBody>
+          <CloseModal
+            onClick={(event) => onClose(event)}
+          >
+            {/* <img
+            alt="X button"
+            style={{ width: '15px', height: '15px' }}
+            src="https://image.flaticon.com/icons/svg/1828/1828778.svg"
+          /> */}
+          x
+          </CloseModal>
         MODAL
-        <button
-          type="button"
-          onClick={(event) => onClose(event)}
-        >
-          Close
-        </button>
-      </div>
+        </ModalBody>
+      </ModalDiv>
     );
   }
 }
 
 Modal.defaultProps = {
   showModal: false,
-  onClose: () => {},
+  onClose: () => { },
 };
 
 Modal.propTypes = {

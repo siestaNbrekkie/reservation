@@ -247,3 +247,37 @@ export const Button = styled.input`
   margin: 15px 24px 15px 1px;
   cursor: pointer;
 `;
+
+export const ModalDiv = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+`;
+
+export const ModalBody = styled.div`
+  color: red;
+  width: 500px;
+  max-width: 100%;
+  max-height: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  position: fixed;
+  top: 15%;
+  left: 10%;
+`;
+
+export const CloseModal = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  color: #484848;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: yellow;
+  border-radius: 50%;
+  border: 5px solid red,
+`;

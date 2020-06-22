@@ -127,7 +127,10 @@ class App extends React.Component {
         />
         {fees}
         <ReserveButton handleSubmit={this.handleSubmit} />
-        <Modal showModal={showModal} onClose={this.handleSubmit} />
+        <Modal
+          showModal={showModal}
+          onClose={this.handleSubmit}
+        />
         {textUnderButton}
       </ResverationsDiv>
     );
