@@ -258,7 +258,11 @@ export const ModalDiv = styled.div`
 `;
 
 export const ModalBody = styled.div`
-  color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 30px 38px 30px;
+  color: #484848;
   width: 500px;
   max-width: 100%;
   max-height: 100%;
@@ -272,12 +276,65 @@ export const ModalBody = styled.div`
 export const CloseModal = styled.div`
   display: flex;
   justify-content: center;
-  width: 25px;
-  height: 25px;
-  color: #484848;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  color: white;// #484848;
   font-size: 16px;
   font-weight: bold;
-  background-color: yellow;
+  background-color: transparent;
+  border: 1px solid #E4E7E7;
   border-radius: 50%;
-  border: 5px solid red,
+  margin-bottom: 28px;
+`;
+
+export const FacebookDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
+  color: white;
+  font-size: 14px;
+  background-color: #3C5A98;
+  border: 1px solid #3b5998;
+  border-radius: 4px;
+  margin-top: 18px;
+  margin-bottom: 7px;
+`;
+
+export const GoogleDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
+  color: black;
+  font-size: 14px;
+  border: 2px solid black;
+  border-radius: 4px;
+  margin-bottom: 20px;
+`;
+
+export const EmailDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
+  color: white;
+  font-size: 14px;
+  background: rgb(234,85,92);
+  border: 2px solid rgb(234,85,92);
+  border-radius: 4px;
+`;
+
+export const Divider = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+`;
+
+export const Lines = styled.div`
+  height: 1px;
+  width: 100%;
+  background: #E4E7E7;
 `;
