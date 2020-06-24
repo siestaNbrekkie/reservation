@@ -6,6 +6,7 @@ This is a fullstack project, with a great focus on React for functionality and R
 
 ## Preview of functionality
 
+![reservations-demo](https://user-images.githubusercontent.com/41028186/85637723-cce1df00-b638-11ea-8254-40a78cb2853a.gif)
 
 ## Table of Contents
 
