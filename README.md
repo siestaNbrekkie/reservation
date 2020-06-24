@@ -77,38 +77,40 @@ Screenshots of deployed service:
 
 Initial
 
-<img width="200" alt="initial" src="https://user-images.githubusercontent.com/41028186/85626686-44584400-b622-11ea-88bb-b423c479eef3.png">
+<img width="250" alt="initial" src="https://user-images.githubusercontent.com/41028186/85626686-44584400-b622-11ea-88bb-b423c479eef3.png">
 
 Check-in calendar
 
-<img width="200" alt="checkin" src="https://user-images.githubusercontent.com/41028186/85627051-ccd6e480-b622-11ea-9964-b2db54ede6e9.png">
+<img width="250" alt="checkin" src="https://user-images.githubusercontent.com/41028186/85627051-ccd6e480-b622-11ea-9964-b2db54ede6e9.png">
 
 Checkout calendar
 
-<img width="200" alt="checkout" src="https://user-images.githubusercontent.com/41028186/85627131-e8da8600-b622-11ea-9004-5ee20e46f418.png">
+<img width="250" alt="checkout" src="https://user-images.githubusercontent.com/41028186/85627131-e8da8600-b622-11ea-9004-5ee20e46f418.png">
 
 Dates chosen and fees calculated
 
-<img width="200" alt="calculated-fees" src="https://user-images.githubusercontent.com/41028186/85627179-fa239280-b622-11ea-8fd4-8e8ae0574b5a.png">
+<img width="250" alt="calculated-fees" src="https://user-images.githubusercontent.com/41028186/85627179-fa239280-b622-11ea-8fd4-8e8ae0574b5a.png">
 
 Adding guests
 
-<img width="200" alt="add-guests" src="https://user-images.githubusercontent.com/41028186/85627303-2a6b3100-b623-11ea-9329-07f074d5ea7e.png">
+<img width="250" alt="add-guests" src="https://user-images.githubusercontent.com/41028186/85627303-2a6b3100-b623-11ea-9329-07f074d5ea7e.png">
 
 Updated with number of guests
 
-<img width="200" alt="include-guests" src="https://user-images.githubusercontent.com/41028186/85627378-3f47c480-b623-11ea-8f39-3f9477230f96.png">
+<img width="250" alt="include-guests" src="https://user-images.githubusercontent.com/41028186/85627378-3f47c480-b623-11ea-8f39-3f9477230f96.png">
 
 Sign up modal
 
-<img width="250" alt="modal" src="https://user-images.githubusercontent.com/41028186/85627462-62727400-b623-11ea-99ca-56305f2a3ca3.png">
+<img width="350" alt="modal" src="https://user-images.githubusercontent.com/41028186/85627462-62727400-b623-11ea-99ca-56305f2a3ca3.png">
 
 Reservations GIF
 
-![reservations-gif](https://user-images.githubusercontent.com/41028186/85634081-7b812200-b62f-11ea-9740-1ea5e79c5130.gif)
+![reservation-gif](https://user-images.githubusercontent.com/41028186/85629928-951e6b80-b627-11ea-8697-50a3dbd92b05.gif)
 
 ## Related Projects
 
 https://github.com/siestaNbrekkie/image-carousel
+
 https://github.com/siestaNbrekkie/reviews
+
 https://github.com/siestaNbrekkie/calendar
