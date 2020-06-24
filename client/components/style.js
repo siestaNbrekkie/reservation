@@ -286,6 +286,7 @@ export const CloseModal = styled.div`
   border: 1px solid #E4E7E7;
   border-radius: 50%;
   margin-bottom: 28px;
+  cursor: pointer;
 `;
 
 export const FacebookDiv = styled.div`
