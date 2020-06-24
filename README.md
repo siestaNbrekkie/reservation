@@ -101,7 +101,7 @@ Updated with number of guests
 
 Sign up modal
 
-<img width="350" alt="modal" src="https://user-images.githubusercontent.com/41028186/85627462-62727400-b623-11ea-99ca-56305f2a3ca3.png">
+<img width="500" alt="modal" src="https://user-images.githubusercontent.com/41028186/85627462-62727400-b623-11ea-99ca-56305f2a3ca3.png">
 
 Reservations GIF
 
