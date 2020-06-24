@@ -6,7 +6,6 @@ This is a fullstack project, with a great focus on React for functionality and R
 
 ## Preview of functionality
 
-![reservation-gif](https://user-images.githubusercontent.com/41028186/85629928-951e6b80-b627-11ea-8697-50a3dbd92b05.gif)
 
 ## Table of Contents
 
@@ -105,7 +104,7 @@ Sign up modal
 
 Reservations GIF
 
-![reservation-gif](https://user-images.githubusercontent.com/41028186/85629928-951e6b80-b627-11ea-8697-50a3dbd92b05.gif)
+![reservation-gif](https://user-images.githubusercontent.com/41028186/85636143-8f7b5280-b634-11ea-9d90-b12a69d958d9.gif)
 
 ## Related Projects
 
