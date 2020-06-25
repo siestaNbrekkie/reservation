@@ -2,7 +2,7 @@
 
 > This is the reservations module for a rental reservation web app created by siestaNbrekkie. Users are shown the price per night, rating and number of reviews of a specific listing. They then can browse through the calendar to choose dates for their stay, as well as add the number of guests to their booking. Considering the number of nights and fees, a total price is calculated, and users can click the reservation button, which prompts them to sign up to complete the booking.
 
-This is a fullstack project, with a great focus on React for functionality and React styled components for styling. The backend is compromised of an Express server and MySQL as the datatbase, with Sequelize as the ORM.
+This is a fullstack project, with a great focus on React for functionality and React styled components for styling. The backend is comprised of an Express server and MySQL as the datatbase, with Sequelize as the ORM.
 
 ## Preview of functionality
 
